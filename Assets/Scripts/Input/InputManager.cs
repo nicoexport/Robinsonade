@@ -1,4 +1,5 @@
 using Architecture;
+using UnityEngine;
 
 namespace Input
 {
@@ -15,12 +16,12 @@ namespace Input
       
       public float HorizontalInput()
       {
-        return PlayerInputActions.Player.Movement.ReadValue<UnityEngine.Vector2>().x;
+        return PlayerInputActions.Player.Movement.ReadValue<Vector2>().x;
       }
 
       public float VerticalInput()
       {
-         return PlayerInputActions.Player.Movement.ReadValue<UnityEngine.Vector2>().y;
+         return PlayerInputActions.Player.Movement.ReadValue<Vector2>().y;
       }
    }
 }
