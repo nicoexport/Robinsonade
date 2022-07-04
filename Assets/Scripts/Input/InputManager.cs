@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Architecture;
 
@@ -7,35 +7,39 @@ namespace Input
 {
     public class InputManager : Singleton<InputManager>
     {
-        public UnityEvent InteractEvent;
-
-        public PlayerInputActions PlayerInputActions { get; private set; }
-
+        public static event Action<InputAction.CallbackContext> InteractEvent;
+        private PlayerInputActions _playerInputActions;
+        
         protected override void Awake()
         {
             base.Awake();
-            PlayerInputActions = new PlayerInputActions();
-            PlayerInputActions.Player.Enable();
+            _playerInputActions = new PlayerInputActions();
+            _playerInputActions.Player.Enable();
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
-            PlayerInputActions.Player.Interact.performed += InteractInput;
+            _playerInputActions.Player.Interact.performed += InteractInput;
+        }
+
+        protected void OnDisable()
+        {
+            _playerInputActions.Player.Interact.performed -= InteractInput;
         }
 
         public float HorizontalInput()
         {
-            return PlayerInputActions.Player.Movement.ReadValue<Vector2>().x;
+            return _playerInputActions.Player.Movement.ReadValue<Vector2>().x;
         }
 
         public float VerticalInput()
         {
-            return PlayerInputActions.Player.Movement.ReadValue<Vector2>().y;
+            return _playerInputActions.Player.Movement.ReadValue<Vector2>().y;
         }
 
-        public void InteractInput(InputAction.CallbackContext context)
+        private void InteractInput(InputAction.CallbackContext context)
         {
-            InteractEvent.Invoke();
+            InteractEvent?.Invoke(context);
         }
     }
 }

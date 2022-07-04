@@ -1,13 +1,20 @@
+using System;
 using UnityEngine;
 using Input;
+using UnityEngine.InputSystem;
 
 public class InteractWithTrigger : MonoBehaviour
 {
     private IInteractable _interactable;
-
-    private void Start()
+    
+    private void OnEnable()
     {
-        InputManager.Instance.InteractEvent.AddListener(InteractInTrigger);
+        InputManager.InteractEvent += InteractInTrigger;
+    }
+
+    private void OnDisable()
+    { 
+        InputManager.InteractEvent -= InteractInTrigger;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +33,7 @@ public class InteractWithTrigger : MonoBehaviour
         }
     }
 
-    private void InteractInTrigger()
+    private void InteractInTrigger(InputAction.CallbackContext callbackContext)
     {
         _interactable?.Interact();
     }
