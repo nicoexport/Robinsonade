@@ -5,8 +5,15 @@ using UnityEngine.InputSystem;
 
 public class InteractWithTrigger : MonoBehaviour
 {
+    private static readonly int Interact = Animator.StringToHash("Interact");
     private IInteractable _interactable;
-    
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponentInChildren<Animator>();
+    }
+
     private void OnEnable()
     {
         InputManager.InteractEvent += InteractInTrigger;
@@ -35,6 +42,8 @@ public class InteractWithTrigger : MonoBehaviour
 
     private void InteractInTrigger(InputAction.CallbackContext callbackContext)
     {
+        if (_interactable == null) return;
         _interactable?.Interact();
+        _animator.SetTrigger(Interact);
     }
 }
