@@ -5,19 +5,21 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
-        static readonly int XVelocity = Animator.StringToHash("xVelocity");
+        private static readonly int XVelocity = Animator.StringToHash("xVelocity");
         [SerializeField] private float _moveSpeed;
         private float _horizontalInput;
         private Rigidbody2D _rigidbody2D;
         private Animator _animator;
-        SpriteRenderer _spriteRenderer;
-        bool _facingRight = true;
+        private SpriteRenderer _spriteRenderer;
+        private Transform _transform;
+        private bool _facingRight = true;
 
         protected void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            _transform = transform;
         }
 
         protected void Update()
@@ -40,10 +42,16 @@ namespace Player
             {
                 case true when vel.x < 0:
                 case false when vel.x > 0:
-                    _spriteRenderer.flipX = !_spriteRenderer.flipX;
-                    _facingRight = !_facingRight;
+                    Flip();
                     break;
             }
+        }
+
+        private void Flip()
+        {   
+            //_spriteRenderer.flipX = !_spriteRenderer.flipX;
+            _transform.Rotate(0f, 180f, 0f);
+            _facingRight = !_facingRight;
         }
     }
 }
