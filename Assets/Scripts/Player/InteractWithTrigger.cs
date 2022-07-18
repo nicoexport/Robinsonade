@@ -16,12 +16,12 @@ public class InteractWithTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.InteractEvent += InteractInTrigger;
+        InputManager.Instance.InteractEvent += InteractInTrigger;
     }
 
     private void OnDisable()
     { 
-        InputManager.InteractEvent -= InteractInTrigger;
+        InputManager.Instance.InteractEvent -= InteractInTrigger;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

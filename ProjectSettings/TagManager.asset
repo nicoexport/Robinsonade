@@ -41,15 +41,15 @@ TagManager:
   - name: Background
     uniqueID: 2074665589
     locked: 0
+  - name: Midground
+    uniqueID: 3140943205
+    locked: 0
   - name: Interactable
     uniqueID: 3113810089
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 2117897929
     locked: 0
-  - name: Midground
-    uniqueID: 3140943205
+  - name: Default
+    uniqueID: 0
     locked: 0

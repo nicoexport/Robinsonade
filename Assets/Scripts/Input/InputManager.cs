@@ -7,7 +7,7 @@ namespace Input
 {
     public class InputManager : Singleton<InputManager>
     {
-        public static event Action<InputAction.CallbackContext> InteractEvent;
+        public event Action<InputAction.CallbackContext> InteractEvent;
         private PlayerInputActions _playerInputActions;
         
         protected override void Awake()

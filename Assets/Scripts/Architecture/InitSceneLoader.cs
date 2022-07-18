@@ -8,6 +8,7 @@ namespace Architecture
     {
         const int INIT_SCENE_BUILDINDEX = 0;
         const int MAIN_MENU_SCENE_BUILDINDEX = 1;
+
         protected override void Awake()
         {
             base.Awake();
