@@ -6,8 +6,8 @@ namespace Architecture
 {
     public class InitSceneLoader : Singleton<InitSceneLoader>
     {
-        const int INIT_SCENE_BUILDINDEX = 0;
         const int MAIN_MENU_SCENE_BUILDINDEX = 1;
+        [SerializeField] private SceneSetupListSo _scenesToLoad;
 
         protected override void Awake()
         {
@@ -18,18 +18,12 @@ namespace Architecture
         private IEnumerator SceneSetupEnumerator()
         {
             Time.timeScale = 0f;
-
 #if UNITY_EDITOR
-            switch (SceneManager.GetActiveScene().buildIndex)
+            foreach (var setup in _scenesToLoad.List)
             {
-                case INIT_SCENE_BUILDINDEX:
-                    yield return SceneManager.LoadSceneAsync(MAIN_MENU_SCENE_BUILDINDEX, LoadSceneMode.Additive);
-                    SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_BUILDINDEX));
-                    break;
-
-                default:
-                    SceneManager.LoadScene(INIT_SCENE_BUILDINDEX, LoadSceneMode.Additive);
-                    break;
+                yield return SceneManager.LoadSceneAsync(setup.path, LoadSceneMode.Additive);
+                if (setup.isActive)
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByPath(setup.path));
             }
 #else
             yield return SceneManager.LoadScene(MAIN_MENU_SCENE_BUILDINDEX, LoadSceneMode.Additive);

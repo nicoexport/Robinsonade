@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
 using System;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 
 namespace Architecture
 {
     public static class Bootstrap
     {
-        //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        static void InitializeBootstrap()
+        [InitializeOnEnterPlayMode]
+        static void SetOpenScenesForLoading()
         {
-            var bootstrap = UnityEngine.Object.Instantiate(Resources.Load("P_Bootstrap")) as GameObject;
-            if (bootstrap == null) throw new ApplicationException();
-            UnityEngine.Object.DontDestroyOnLoad(bootstrap);
+            var scenes = Resources.Load("SO_Scenes_To_Load") as SceneSetupListSo;
+            if (scenes != null)
+            {
+                scenes.Clear();
+                foreach (var setup in EditorSceneManager.GetSceneManagerSetup())
+                {
+                    scenes.Add(setup);
+                }
+            }
         }
     }
 }
