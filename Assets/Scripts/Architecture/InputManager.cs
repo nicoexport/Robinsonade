@@ -1,9 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Architecture;
 
-namespace Input
+namespace Architecture
 {
     public class InputManager : Singleton<InputManager>
     {

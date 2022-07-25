@@ -1,5 +1,5 @@
+using Architecture;
 using UnityEngine;
-using Input;
 
 namespace Player
 {

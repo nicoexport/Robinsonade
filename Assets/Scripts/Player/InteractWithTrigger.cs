@@ -1,6 +1,6 @@
 using System;
+using Architecture;
 using UnityEngine;
-using Input;
 using UnityEngine.InputSystem;
 
 public class InteractWithTrigger : MonoBehaviour

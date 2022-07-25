@@ -1,5 +1,5 @@
 using System;
-using Input;
+using Architecture;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
