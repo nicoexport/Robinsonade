@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Prefabs/Scenes/SCENE_Init.unity
+    path: Assets/Scenes/SCENE_Init.unity
     guid: 6d470fce9fbc21a44879278401381c14
+  - enabled: 1
+    path: Assets/Scenes/Scene_Auto_Tiling_Test.unity
+    guid: 83b2c016105c1df48ac1b6de90b738ce
   m_configObjects: {}
