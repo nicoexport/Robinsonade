@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
@@ -22,3 +22,4 @@ namespace Architecture
         }
     }
 }
+#endif
