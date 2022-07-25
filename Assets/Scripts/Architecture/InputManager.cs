@@ -50,6 +50,7 @@ namespace Architecture
 
         void TopDownMovementInput(InputAction.CallbackContext ctx)
         {
+            Debug.Log("TOP DOWN PERFORMED");
             TopDownMoveEvent?.Invoke(ctx);
         }
         

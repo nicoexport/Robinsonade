@@ -1,44 +1,67 @@
-using System;
 using Architecture;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Player
 {
    public class PlayerTopDownController : MonoBehaviour
    {
-      Vector3 _moveVector;
+      Vector2 _moveVector;
       bool _wantMove;
       bool _canMove = true;
+      Transform _transform;
+
+      protected void Awake()
+      {
+         _transform = transform;   
+      }
       
       protected void OnEnable()
       {
          InputManager.Instance.ToggleActionMap(InputManager.Instance.PlayerInputActions.Topdown);
-         InputManager.Instance.TopDownMoveEvent += ReadMoveValue;
       }
-
-      protected void OnDisable()
+      
+      protected void Update()
       {
-         InputManager.Instance.TopDownMoveEvent -= ReadMoveValue;
+         _moveVector = InputManager.Instance.PlayerInputActions.Topdown.Move.ReadValue<Vector2>();
       }
-
+      
       protected void FixedUpdate()
       {
          Move();
       }
-      
-      private void ReadMoveValue(InputAction.CallbackContext ctx)
+
+      // ReSharper disable Unity.PerformanceAnalysis
+      void Move()
       {
-         print((Vector3) ctx.ReadValue<Vector2>());
-         _moveVector = (Vector3) ctx.ReadValue<Vector2>();
-         _wantMove = _moveVector.magnitude > 0;
+         var moveVector = _moveVector;
+         if (moveVector.magnitude == 0)
+            return;
+         if (!_canMove)
+            return;
+
+         var direction = GetDirection(moveVector);
+         if (TileManager.Instance.CheckCollision(_transform.position + (Vector3) direction))
+         {
+            // To do bounce against wall
+            return;
+         }
+            
+         _canMove = false;
+         LeanTween.move(gameObject, _transform.position + (Vector3) direction, 0.3f).setOnComplete(() =>
+         {
+            _canMove = true;
+         });
       }
 
-      private void Move()
+      Vector2 GetDirection(Vector2 vector)
       {
-         if(!_wantMove)
-            return;
-         transform.position += _moveVector;
+         if (vector == Vector2.down || vector ==  Vector2.up || vector ==  Vector2.left || vector ==  Vector2.right)
+            return vector; 
+         if (vector.x >= 0.1f && Mathf.Abs(vector.y) >= 0.1f)
+            return Vector2.right;
+         if (vector.x <= -0.1f && Mathf.Abs(vector.y) >= 0.1f)
+            return Vector2.left;
+         return Vector2.zero;
       }
    }
 }
