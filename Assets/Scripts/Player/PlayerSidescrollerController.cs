@@ -3,7 +3,7 @@ using Input;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerSidescrollerController : MonoBehaviour
     {
         private static readonly int XVelocity = Animator.StringToHash("xVelocity");
         [SerializeField] private float _moveSpeed;

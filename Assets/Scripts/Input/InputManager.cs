@@ -8,38 +8,57 @@ namespace Input
     public class InputManager : Singleton<InputManager>
     {
         public event Action<InputAction.CallbackContext> InteractEvent;
-        private PlayerInputActions _playerInputActions;
+        public event Action<InputAction.CallbackContext> TopDownMoveEvent;
+        public PlayerInputActions PlayerInputActions { get; private set; }
         
         protected override void Awake()
         {
             base.Awake();
-            _playerInputActions = new PlayerInputActions();
-            _playerInputActions.Player.Enable();
+            PlayerInputActions = new PlayerInputActions();
+            PlayerInputActions.Sidescroll.Enable();
         }
 
         protected void OnEnable()
         {
-            _playerInputActions.Player.Interact.performed += InteractInput;
+            PlayerInputActions.Sidescroll.Interact.performed += InteractInput;
+            PlayerInputActions.Topdown.Move.performed += TopDownMovementInput;
         }
+
 
         protected void OnDisable()
         {
-            _playerInputActions.Player.Interact.performed -= InteractInput;
+            PlayerInputActions.Sidescroll.Interact.performed -= InteractInput;
+            PlayerInputActions.Topdown.Move.performed -= TopDownMovementInput;
+        }
+
+        public void ToggleActionMap(InputActionMap map)
+        {
+            if (map.enabled)
+                return;
+            PlayerInputActions.Disable();
+            map.Enable();
         }
 
         public float HorizontalInput()
         {
-            return _playerInputActions.Player.Movement.ReadValue<Vector2>().x;
+            return PlayerInputActions.Sidescroll.Movement.ReadValue<Vector2>().x;
         }
 
         public float VerticalInput()
         {
-            return _playerInputActions.Player.Movement.ReadValue<Vector2>().y;
+            return PlayerInputActions.Sidescroll.Movement.ReadValue<Vector2>().y;
         }
 
+        void TopDownMovementInput(InputAction.CallbackContext ctx)
+        {
+            TopDownMoveEvent?.Invoke(ctx);
+        }
+        
         private void InteractInput(InputAction.CallbackContext context)
         {
             InteractEvent?.Invoke(context);
         }
+        
+        
     }
 }
