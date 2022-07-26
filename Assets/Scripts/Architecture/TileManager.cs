@@ -23,36 +23,41 @@ namespace Architecture
 
       public Vector3 GetNeighbourPosition(Vector3 position, Direction direction)
       {
-         Vector3 neighbour = default;
+         Vector3Int neighbour = default;
          var playerTile = _tilemaps[0].WorldToCell(position);
-         TileBase targetTile = default;
          switch (direction)
          {
             case Direction.North:
-              
+               neighbour = playerTile + Vector3Int.up;
                break;
             case Direction.West:
+               neighbour = playerTile + Vector3Int.left;
                break;
             case Direction.South:
+               neighbour = playerTile + Vector3Int.down;
                break;
             case Direction.East:
+               neighbour = playerTile + Vector3Int.right;
                break;
             case Direction.None:
-               return position;
+               neighbour = playerTile;
                break;
             default:
                throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
          }
-         return neighbour;
+
+         Debug.Log(neighbour);
+         return _tilemaps[0].GetCellCenterWorld(neighbour);
       }
+   }
+   
+   public enum Direction
+   {
+      North, 
+      West, 
+      South,
+      East,
+      None
    }
 }
 
-public enum Direction
-{
-   North, 
-   West, 
-   South,
-   East,
-   None
-}

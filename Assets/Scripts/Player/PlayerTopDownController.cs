@@ -1,3 +1,4 @@
+using System;
 using Architecture;
 using UnityEngine;
 
@@ -9,10 +10,12 @@ namespace Player
       bool _wantMove;
       bool _canMove = true;
       Transform _transform;
+      ITopDownCharacter _character;
 
       protected void Awake()
       {
-         _transform = transform;   
+         _transform = transform;
+         _character = GetComponent<ITopDownCharacter>();
       }
       
       protected void OnEnable()
@@ -44,15 +47,12 @@ namespace Player
          
          if (TileManager.Instance.CheckCollision(target))
          {
-            // To do bounce against wall
+            _canMove = false;
+            _character.Collide(GetVector2FromDirection(direction), () => { _canMove = true;});
             return;
          }
-            
          _canMove = false;
-         LeanTween.move(gameObject, target, 0.3f).setOnComplete(() =>
-         {
-            _canMove = true;
-         });
+         _character.Move(target, GetVector2FromDirection(direction), () => { _canMove = true; } );
       }
 
       Direction GetDirection(Vector2 vector)
@@ -71,6 +71,34 @@ namespace Player
          if (vector.x <= -0.1f && Mathf.Abs(vector.y) >= 0.1f)
             return Direction.West;
          return Direction.None;
+      }
+
+      static Vector2 GetVector2FromDirection(Direction direction)
+      {
+         Vector3 vector;
+
+         switch (direction)
+         {
+            case Direction.North:
+               vector = Vector3.up;
+               break;
+            case Direction.West:
+               vector = Vector3.left;
+               break;
+            case Direction.South:
+               vector = Vector3.down;
+               break;
+            case Direction.East:
+               vector = Vector3.right;
+               break;
+            case Direction.None:
+               vector = Vector3.zero;
+               break;
+            default:
+               throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+         }
+
+         return vector;
       }
    }
 }

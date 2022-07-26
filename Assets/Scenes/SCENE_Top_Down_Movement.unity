@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 1512187721}
   - component: {fileID: 1512187720}
   - component: {fileID: 1512187719}
+  - component: {fileID: 1512187722}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -390,6 +391,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1512187722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512187718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &2027035294
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2027035295}
   - component: {fileID: 2027035296}
+  - component: {fileID: 2027035297}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -435,6 +470,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0cebcd301407ca93a2a5068080199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2027035297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027035294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cf85bdcbce44a2906a50648b913303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveTimeInSeconds: 0.22
+  _moveRotation: 30
+  _moveRotationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3170515
+      value: -0.4347705
+      inSlope: 0.013526559
+      outSlope: 0.013526559
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7675766
+      value: 0.20818697
+      inSlope: 0.09059123
+      outSlope: 0.09059123
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.7068937
+      outSlope: -2.7068937
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15683228
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _collideTimeInSeconds: 0.2
+  _collisionMovementInMeter: 0.05
 --- !u!1 &2031646956
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,20 +585,6 @@ CompositeCollider2D:
   - m_Collider: {fileID: 2031646960}
     m_ColliderPaths:
     - - X: 40000000
-        Y: 29999900
-      - X: 40000041
-        Y: 29999900
-      - X: 40000100
-        Y: 29999959
-      - X: 40000100
-        Y: 40000041
-      - X: 40000041
-        Y: 40000100
-      - X: 29999959
-        Y: 40000100
-      - X: 29999900
-        Y: 40000041
-      - X: 29999900
         Y: 40000000
       - X: -30000000
         Y: 40000000
@@ -517,14 +596,8 @@ CompositeCollider2D:
         Y: -20000000
       - X: -20000000
         Y: 30000000
-      - X: 29999900
-        Y: 30000000
-      - X: 29999900
-        Y: 29999959
-      - X: 29999959
-        Y: 29999900
       - X: 30000000
-        Y: 29999900
+        Y: 30000000
       - X: 30000000
         Y: -10000000
       - X: 20000000
@@ -542,13 +615,13 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths:
     - - {x: 3.999971, y: -3}
-      - {x: 3.9999747, y: 4.00001}
+      - {x: 3.999971, y: 4}
       - {x: -3, y: 3.999971}
       - {x: -2.999971, y: -3}
     - - {x: 2, y: -1.9999707}
       - {x: -2, y: -1.9999707}
       - {x: -1.9999707, y: 3}
-      - {x: 3, y: 2.9999607}
+      - {x: 3, y: 2.9999707}
       - {x: 2.9999707, y: -1}
       - {x: 2, y: -1.0000293}
     - - {x: 1.9999708, y: 1}
