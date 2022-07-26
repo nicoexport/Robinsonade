@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -19,5 +20,39 @@ namespace Architecture
          }
          return false;
       }
+
+      public Vector3 GetNeighbourPosition(Vector3 position, Direction direction)
+      {
+         Vector3 neighbour = default;
+         var playerTile = _tilemaps[0].WorldToCell(position);
+         TileBase targetTile = default;
+         switch (direction)
+         {
+            case Direction.North:
+              
+               break;
+            case Direction.West:
+               break;
+            case Direction.South:
+               break;
+            case Direction.East:
+               break;
+            case Direction.None:
+               return position;
+               break;
+            default:
+               throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+         }
+         return neighbour;
+      }
    }
+}
+
+public enum Direction
+{
+   North, 
+   West, 
+   South,
+   East,
+   None
 }

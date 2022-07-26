@@ -40,28 +40,37 @@ namespace Player
             return;
 
          var direction = GetDirection(moveVector);
-         if (TileManager.Instance.CheckCollision(_transform.position + (Vector3) direction))
+         var target = TileManager.Instance.GetNeighbourPosition(_transform.position, direction);
+         
+         if (TileManager.Instance.CheckCollision(target))
          {
             // To do bounce against wall
             return;
          }
             
          _canMove = false;
-         LeanTween.move(gameObject, _transform.position + (Vector3) direction, 0.3f).setOnComplete(() =>
+         LeanTween.move(gameObject, target, 0.3f).setOnComplete(() =>
          {
             _canMove = true;
          });
       }
 
-      Vector2 GetDirection(Vector2 vector)
+      Direction GetDirection(Vector2 vector)
       {
-         if (vector == Vector2.down || vector ==  Vector2.up || vector ==  Vector2.left || vector ==  Vector2.right)
-            return vector; 
+         if (vector == Vector2.down)
+            return Direction.South;
+         if (vector == Vector2.up)
+            return Direction.North;
+         if(vector ==  Vector2.left)
+            return Direction.West;
+         if(vector ==  Vector2.right)
+            return Direction.East; 
+         
          if (vector.x >= 0.1f && Mathf.Abs(vector.y) >= 0.1f)
-            return Vector2.right;
+            return Direction.East;
          if (vector.x <= -0.1f && Mathf.Abs(vector.y) >= 0.1f)
-            return Vector2.left;
-         return Vector2.zero;
+            return Direction.West;
+         return Direction.None;
       }
    }
 }
