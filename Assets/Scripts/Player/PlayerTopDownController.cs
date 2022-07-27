@@ -11,6 +11,7 @@ namespace Player
       bool _canMove = true;
       Transform _transform;
       ITopDownCharacter _character;
+      Vector2 _prevVector;
 
       protected void Awake()
       {
@@ -25,9 +26,22 @@ namespace Player
       
       protected void Update()
       {
-         _moveVector = InputManager.Instance.PlayerInputActions.Topdown.Move.ReadValue<Vector2>();
+         _moveVector = GetMoveVector();
       }
-      
+
+      Vector2 GetMoveVector()
+      {
+         var vector = InputManager.Instance.PlayerInputActions.Topdown.Move.ReadValue<Vector2>();
+         if (vector == Vector2.zero)
+            return vector;
+         if (vector == Vector2.up || vector == Vector2.down || vector == Vector2.right || vector == Vector2.left)
+         {
+            _prevVector = vector;
+            return vector;
+         }
+         return vector - _prevVector;
+      }
+
       protected void FixedUpdate()
       {
          Move();

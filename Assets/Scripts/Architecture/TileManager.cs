@@ -45,8 +45,6 @@ namespace Architecture
             default:
                throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
          }
-
-         Debug.Log(neighbour);
          return _tilemaps[0].GetCellCenterWorld(neighbour);
       }
    }
