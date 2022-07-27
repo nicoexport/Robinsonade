@@ -78,12 +78,8 @@ namespace Player
          if(vector ==  Vector2.left)
             return Direction.West;
          if(vector ==  Vector2.right)
-            return Direction.East; 
-         
-         if (vector.x >= 0.1f && Mathf.Abs(vector.y) >= 0.1f)
             return Direction.East;
-         if (vector.x <= -0.1f && Mathf.Abs(vector.y) >= 0.1f)
-            return Direction.West;
+         
          return Direction.None;
       }
 
