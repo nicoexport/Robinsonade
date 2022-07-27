@@ -24,7 +24,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     ""name"": ""INP_PlayerInputActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Sidescroll"",
             ""id"": ""2d52d019-29a1-4ecd-bcdf-5482f2dc2460"",
             ""actions"": [
                 {
@@ -191,6 +191,162 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Topdown"",
+            ""id"": ""39abf853-ed8a-41a7-8dc8-48ecbc9eb6c5"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""1481317b-2a8f-42ce-b4e5-0f12d745e1cf"",
+                    ""expectedControlType"": ""Dpad"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveX"",
+                    ""type"": ""Value"",
+                    ""id"": ""338e5070-808d-4c8c-8c47-568b0f6ea55e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveY"",
+                    ""type"": ""Value"",
+                    ""id"": ""e1a571fe-e6e7-4eb9-96ea-f90d35e10936"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8cf5b7cb-dad8-4c77-9d83-8f3a046ecd0c"",
+                    ""path"": ""2DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""8d83b6ec-9acd-4f2e-bb78-44753a6093ee"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8745504e-93ea-4f8f-a9cb-25bd856f7a6b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""67aefa00-6292-40f1-8b63-32ff7a0c7e6c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""205fbfbd-f5af-4e30-bdc5-647d5fe1ca8a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""4f5012f2-3396-4c26-bf75-c0f1a7649ad6"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveX"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8ad33059-a351-43b7-9dd1-08108baf7d78"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""77fc99e0-aff6-4b0c-b6b4-ffe8cdaed382"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""6dee173c-1805-42d2-ae72-d67063ed221d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveY"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c7297a3a-a078-4144-8732-76fc73108a09"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""464b056f-d452-4e80-bc66-9487b06f1125"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -218,10 +374,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        // Sidescroll
+        m_Sidescroll = asset.FindActionMap("Sidescroll", throwIfNotFound: true);
+        m_Sidescroll_Movement = m_Sidescroll.FindAction("Movement", throwIfNotFound: true);
+        m_Sidescroll_Interact = m_Sidescroll.FindAction("Interact", throwIfNotFound: true);
+        // Topdown
+        m_Topdown = asset.FindActionMap("Topdown", throwIfNotFound: true);
+        m_Topdown_Move = m_Topdown.FindAction("Move", throwIfNotFound: true);
+        m_Topdown_MoveX = m_Topdown.FindAction("MoveX", throwIfNotFound: true);
+        m_Topdown_MoveY = m_Topdown.FindAction("MoveY", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -278,34 +439,34 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Interact;
-    public struct PlayerActions
+    // Sidescroll
+    private readonly InputActionMap m_Sidescroll;
+    private ISidescrollActions m_SidescrollActionsCallbackInterface;
+    private readonly InputAction m_Sidescroll_Movement;
+    private readonly InputAction m_Sidescroll_Interact;
+    public struct SidescrollActions
     {
         private @PlayerInputActions m_Wrapper;
-        public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public SidescrollActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Sidescroll_Movement;
+        public InputAction @Interact => m_Wrapper.m_Sidescroll_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_Sidescroll; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(SidescrollActions set) { return set.Get(); }
+        public void SetCallbacks(ISidescrollActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_SidescrollActionsCallbackInterface != null)
             {
-                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Movement.started -= m_Wrapper.m_SidescrollActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_SidescrollActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_SidescrollActionsCallbackInterface.OnMovement;
+                @Interact.started -= m_Wrapper.m_SidescrollActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_SidescrollActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_SidescrollActionsCallbackInterface.OnInteract;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_SidescrollActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Movement.started += instance.OnMovement;
@@ -317,7 +478,56 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public SidescrollActions @Sidescroll => new SidescrollActions(this);
+
+    // Topdown
+    private readonly InputActionMap m_Topdown;
+    private ITopdownActions m_TopdownActionsCallbackInterface;
+    private readonly InputAction m_Topdown_Move;
+    private readonly InputAction m_Topdown_MoveX;
+    private readonly InputAction m_Topdown_MoveY;
+    public struct TopdownActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public TopdownActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Topdown_Move;
+        public InputAction @MoveX => m_Wrapper.m_Topdown_MoveX;
+        public InputAction @MoveY => m_Wrapper.m_Topdown_MoveY;
+        public InputActionMap Get() { return m_Wrapper.m_Topdown; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TopdownActions set) { return set.Get(); }
+        public void SetCallbacks(ITopdownActions instance)
+        {
+            if (m_Wrapper.m_TopdownActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMove;
+                @MoveX.started -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMoveX;
+                @MoveX.performed -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMoveX;
+                @MoveX.canceled -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMoveX;
+                @MoveY.started -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMoveY;
+                @MoveY.performed -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMoveY;
+                @MoveY.canceled -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMoveY;
+            }
+            m_Wrapper.m_TopdownActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @MoveX.started += instance.OnMoveX;
+                @MoveX.performed += instance.OnMoveX;
+                @MoveX.canceled += instance.OnMoveX;
+                @MoveY.started += instance.OnMoveY;
+                @MoveY.performed += instance.OnMoveY;
+                @MoveY.canceled += instance.OnMoveY;
+            }
+        }
+    }
+    public TopdownActions @Topdown => new TopdownActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -336,9 +546,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface ISidescrollActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface ITopdownActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnMoveX(InputAction.CallbackContext context);
+        void OnMoveY(InputAction.CallbackContext context);
     }
 }
