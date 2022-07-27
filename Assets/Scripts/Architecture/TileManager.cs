@@ -8,6 +8,12 @@ namespace Architecture
    {
       [SerializeField] Tilemap[] _tilemaps;
 
+      public void SnapToGrid(GameObject obj)
+      {
+         var pos = _tilemaps[0].WorldToCell(obj.transform.position);
+         obj.transform.position = _tilemaps[0].GetCellCenterWorld(pos);
+      }
+      
       public bool CheckCollision(Vector3 position)
       {
          foreach (var map in _tilemaps)
