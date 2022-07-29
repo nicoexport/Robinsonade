@@ -7,7 +7,7 @@ namespace Architecture
 {
    public class TileManager : Singleton<TileManager>
    {
-      [SerializeField] Tilemap[] _tilemaps;
+      [SerializeField] private Tilemap[] _tilemaps;
       private readonly Dictionary<Vector3Int, TileObject> _tileObjects = new Dictionary<Vector3Int, TileObject>();
 
       public void AddTileObject(TileObject tileObject)

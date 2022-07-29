@@ -7,7 +7,7 @@ namespace Architecture
 {
     public class InitSceneLoader : Singleton<InitSceneLoader>
     {
-        const int MAIN_MENU_SCENE_BUILDINDEX = 1;
+        private const int MAIN_MENU_SCENE_BUILDINDEX = 1;
 #if UNITY_EDITOR
         [SerializeField] private SceneSetupListSo _scenesToLoad;
 #endif
@@ -41,7 +41,7 @@ namespace Architecture
             base.OnApplicationQuit();
         }
 
-        AsyncOperation unload;
+        private AsyncOperation unload;
         protected override void OnApplicationQuit()
         {
 #if UNITY_EDITOR

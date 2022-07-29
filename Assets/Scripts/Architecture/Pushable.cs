@@ -6,7 +6,6 @@ namespace Architecture
    {
       public bool Push(Direction direction, float timeInSeconds)
       {
-         Debug.Log("Push" + direction);
          var target = TileManager.Instance.GetNeighbourPosition(transform.position, direction);
          if(TileManager.Instance.CheckCollision(target))
             return false;
@@ -23,7 +22,6 @@ namespace Architecture
             }
          }
          UnregisterTileObject();
-         // transform.position = target;
          LeanTween.move(gameObject, target, timeInSeconds);
          RegisterTileObject(target);
          return true;

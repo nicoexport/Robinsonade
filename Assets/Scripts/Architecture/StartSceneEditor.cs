@@ -6,7 +6,7 @@ using UnityEngine;
 public class StartSceneEditor : EditorWindow
 {
     [MenuItem("CustomEditor/StartSceneEditor")]
-    static void Open()
+    private static void Open()
     {
         GetWindow<StartSceneEditor>();
     }

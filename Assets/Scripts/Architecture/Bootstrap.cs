@@ -8,7 +8,7 @@ namespace Architecture
     public static class Bootstrap
     {
         [InitializeOnEnterPlayMode]
-        static void SetOpenScenesForLoading()
+        private static void SetOpenScenesForLoading()
         {
             var scenes = Resources.Load("SO_Scenes_To_Load") as SceneSetupListSo;
             if (scenes != null)
