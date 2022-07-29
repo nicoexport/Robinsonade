@@ -15,6 +15,11 @@ namespace Architecture
          TileManager.Instance.AddTileObject(this);
       }
 
+      protected void RegisterTileObject(Vector3 position)
+      {
+         TileManager.Instance.AddTileObject(this, position);
+      }
+
       protected void UnregisterTileObject()
       {
          TileManager.Instance.RemoveTileObject(this);

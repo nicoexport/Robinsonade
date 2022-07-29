@@ -6,6 +6,8 @@ namespace Player
 {
    public class PlayerTopDownController : MonoBehaviour
    {
+      [SerializeField] private float _moveTimeInSeconds = 0.2f;
+      [SerializeField] private float _pushTimeInSeconds = 0.3f; 
       Vector2 _moveVector;
       bool _wantMove;
       bool _canMove = true;
@@ -64,9 +66,14 @@ namespace Player
          {
             if (tileObj is Pushable pushable)
             {
-               pushable.Push(direction);
+               if (!pushable.Push(direction, _pushTimeInSeconds))
+               {
+                  _canMove = false;
+                  _character.Collide(GetVector2FromDirection(direction), () => { _canMove = true;});
+                  return;
+               }
                _canMove = false;
-               _character.Collide(GetVector2FromDirection(direction), () => { _canMove = true;});
+               _character.Move(target, GetVector2FromDirection(direction), _pushTimeInSeconds,() => { _canMove = true;});
                return;
             }
          }
@@ -78,7 +85,7 @@ namespace Player
             return;
          }
          _canMove = false;
-         _character.Move(target, GetVector2FromDirection(direction), () => { _canMove = true; } );
+         _character.Move(target, GetVector2FromDirection(direction), _moveTimeInSeconds, () => { _canMove = true; } );
       }
 
       Direction GetDirection(Vector2 vector)

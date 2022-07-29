@@ -4,7 +4,7 @@ namespace Architecture
 {
    public class Pushable : TileObject
    {
-      public bool Push(Direction direction)
+      public bool Push(Direction direction, float timeInSeconds)
       {
          Debug.Log("Push" + direction);
          var target = TileManager.Instance.GetNeighbourPosition(transform.position, direction);
@@ -16,15 +16,16 @@ namespace Architecture
          {
             if (otherTileObj is Pushable otherPushable)
             {
-               if (!otherPushable.Push(direction))
+               if (!otherPushable.Push(direction, timeInSeconds))
                {
                   return false;
                }
             }
          }
          UnregisterTileObject();
-         transform.position = target;
-         RegisterTileObject();
+         // transform.position = target;
+         LeanTween.move(gameObject, target, timeInSeconds);
+         RegisterTileObject(target);
          return true;
       }
    }

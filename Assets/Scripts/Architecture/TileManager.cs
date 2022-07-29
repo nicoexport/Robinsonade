@@ -16,6 +16,12 @@ namespace Architecture
          _tileObjects.Add(pos, tileObject);
       }
 
+      public void AddTileObject(TileObject tileObject, Vector3 position)
+      {
+         var pos = _tilemaps[0].WorldToCell(position);
+         _tileObjects.Add(pos, tileObject);
+      }
+
       public void RemoveTileObject(TileObject tileObject)
       {
          var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
