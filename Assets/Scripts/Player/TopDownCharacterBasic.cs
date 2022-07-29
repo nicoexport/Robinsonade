@@ -1,10 +1,11 @@
 using System;
+using Architecture;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Player
 {
-   public class TopDownCharacterBasic : MonoBehaviour, ITopDownCharacter
+   public class TopDownCharacterBasic : TileObject, ITopDownCharacter
    {
       [SerializeField] float _moveTimeInSeconds = 0.2f;
       [SerializeField] float _moveRotation = 40f;
@@ -17,7 +18,12 @@ namespace Player
       public void Move(Vector3 target, Vector2 direction, Action callback)
       {
          OnMove.Invoke();
-         LeanTween.move(gameObject, target, _moveTimeInSeconds).setOnComplete(callback);
+         UnregisterTileObject();
+         LeanTween.move(gameObject, target, _moveTimeInSeconds).setOnComplete(()=>
+         {
+            callback();
+            RegisterTileObject();
+         });
          LeanTween.rotateZ(gameObject,_moveRotation , _moveTimeInSeconds).setEase(_moveRotationCurve);
       }
 

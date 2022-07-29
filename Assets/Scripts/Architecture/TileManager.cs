@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,13 +8,30 @@ namespace Architecture
    public class TileManager : Singleton<TileManager>
    {
       [SerializeField] Tilemap[] _tilemaps;
+      private readonly Dictionary<Vector3Int, TileObject> _tileObjects = new Dictionary<Vector3Int, TileObject>();
 
+      public void AddTileObject(TileObject tileObject)
+      {
+         var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
+         _tileObjects.Add(pos, tileObject);
+         foreach (var obj in _tileObjects)
+         {
+            Debug.Log(obj.Key);
+         }
+      }
+
+      public void RemoveTileObject(TileObject tileObject)
+      {
+         var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
+         _tileObjects.Remove(pos);
+      }
+      
       public void SnapToGrid(GameObject obj)
       {
          var pos = _tilemaps[0].WorldToCell(obj.transform.position);
          obj.transform.position = _tilemaps[0].GetCellCenterWorld(pos);
       }
-      
+
       public bool CheckCollision(Vector3 position)
       {
          foreach (var map in _tilemaps)
