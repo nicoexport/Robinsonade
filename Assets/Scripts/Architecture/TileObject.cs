@@ -7,7 +7,7 @@ namespace Architecture
       protected void Awake()
       {
          TileManager.Instance.SnapToGrid(gameObject);
-         TileManager.Instance.AddTileObject(this);
+         RegisterTileObject();
       }
       
       protected void RegisterTileObject()

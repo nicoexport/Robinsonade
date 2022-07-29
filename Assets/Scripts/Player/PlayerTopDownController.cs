@@ -58,6 +58,18 @@ namespace Player
 
          var direction = GetDirection(moveVector);
          var target = TileManager.Instance.GetNeighbourPosition(_transform.position, direction);
+
+         var tileObj = TileManager.Instance.CheckForTileObject(target);
+         if (tileObj != null)
+         {
+            if (tileObj is Pushable pushable)
+            {
+               pushable.Push(direction);
+               _canMove = false;
+               _character.Collide(GetVector2FromDirection(direction), () => { _canMove = true;});
+               return;
+            }
+         }
          
          if (TileManager.Instance.CheckCollision(target))
          {

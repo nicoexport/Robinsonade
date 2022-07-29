@@ -14,10 +14,6 @@ namespace Architecture
       {
          var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
          _tileObjects.Add(pos, tileObject);
-         foreach (var obj in _tileObjects)
-         {
-            Debug.Log(obj.Key);
-         }
       }
 
       public void RemoveTileObject(TileObject tileObject)
@@ -43,6 +39,14 @@ namespace Architecture
                return true;
          }
          return false;
+      }
+
+      public TileObject CheckForTileObject(Vector3 position)
+      {
+         var gridPos = _tilemaps[0].WorldToCell(position);
+         if (_tileObjects.ContainsKey(gridPos))
+            return _tileObjects[gridPos];
+         return null;
       }
 
       public Vector3 GetNeighbourPosition(Vector3 position, Direction direction)
