@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEngine.WSA;
+using UnityEngine.Events;
 
 namespace Architecture
 {
@@ -9,9 +9,13 @@ namespace Architecture
       [SerializeField] private TileObject _inputIcon1;
       [SerializeField] private TileObject _inputIcon2;
       [SerializeField] private GameObject _combinationPrefab;
-      private Vector3Int[] _neighbours = new Vector3Int[4];
+      [SerializeField] private GameObject _combineVFXPrefab;
+      private readonly Vector3Int[] _neighbours = new Vector3Int[4];
       private bool _combined;
       private bool _setup = false;
+      
+
+      public UnityEvent<Vector3> OnCombine;
 
       protected void Start()
       {
@@ -68,11 +72,14 @@ namespace Architecture
       }
 
       private void Combine()
-      { 
+      {
+         var position = transform.position;
+         OnCombine?.Invoke(position);
         _inputIcon1.Delete();
         _inputIcon2.Delete();
         UnregisterTileObject();
-        Instantiate(_combinationPrefab, transform.position, Quaternion.identity);
+        Instantiate(_combinationPrefab, position, Quaternion.identity);
+        Instantiate(_combineVFXPrefab, position, Quaternion.identity);
         Destroy(gameObject);
       }
    }

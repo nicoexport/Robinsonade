@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SCENE_Init.unity
     guid: 6d470fce9fbc21a44879278401381c14
   - enabled: 1
-    path: Assets/Scenes/SCENE_Auto_Tiling_Test.unity
+    path: Assets/Scenes/Scene_Auto_Tiling_Test.unity
     guid: 83b2c016105c1df48ac1b6de90b738ce
   - enabled: 1
     path: Assets/Scenes/SCENE_Top_Down_Movement 1.unity
     guid: 07a3d38d7ef3caf41af9e88989e5961a
+  - enabled: 1
+    path: Assets/Scenes/SCENE_Top_Down_Movement.unity
+    guid: 05bbe76dfa310cd458bc35745f01cfe8
   m_configObjects: {}
