@@ -48,7 +48,7 @@ namespace Architecture
             return PlayerInputActions.Sidescroll.Movement.ReadValue<Vector2>().y;
         }
 
-        void TopDownMovementInput(InputAction.CallbackContext ctx)
+        private void TopDownMovementInput(InputAction.CallbackContext ctx)
         {
             TopDownMoveEvent?.Invoke(ctx);
         }

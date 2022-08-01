@@ -5,14 +5,15 @@ namespace Architecture
 {
     public class SnapToGrid : MonoBehaviour
     {
-        [SerializeField] bool _snapOnAwake = true;
-        
-        void Awake()
+        [SerializeField] private bool _snapOnAwake = true;
+
+        private void Awake()
         {
-            Snap();
+            if(_snapOnAwake)
+                Snap();
         }
 
-        void Snap()
+        private void Snap()
         { 
             TileManager.Instance.SnapToGrid(gameObject);
         }
