@@ -11,6 +11,7 @@ namespace Architecture
 #if UNITY_EDITOR
         [SerializeField] private SceneSetupListSo _scenesToLoad;
 #endif
+
         protected override void Awake()
         {
             base.Awake();
