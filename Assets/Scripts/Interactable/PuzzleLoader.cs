@@ -10,6 +10,8 @@ public class PuzzleLoader : MonoBehaviour
     [SerializeField]
     private GameObject _PlayerToLoad;
 
+    [SerializeField] private bool _instantiatePlayer;
+
     public void SwitchToPuzzleScene()
     {
         UnloadScene();
@@ -35,7 +37,7 @@ public class PuzzleLoader : MonoBehaviour
     private void LoadPuzzle()
     {
         //TODO: LoadPuzzleFrom Scriptable Object
-        SpawnPlayerAtPosition(_PuzzleToLoad.playerSpawnPosition);
+        if(_instantiatePlayer)SpawnPlayerAtPosition(_PuzzleToLoad.playerSpawnPosition);
     }
 
     private void SpawnPlayerAtPosition(Vector3Int spawnPosition)
