@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: SO_Puzzle
   m_EditorClassIdentifier: 
   playerSpawnPosition: {x: 0, y: 0, z: 0}
+  tileObjects:
+  - tileObject: {fileID: 0}
+    spawnPosition: {x: 0, y: 0, z: 0}

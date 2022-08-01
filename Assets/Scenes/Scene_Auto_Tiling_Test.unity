@@ -4129,6 +4129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Phantom
       objectReference: {fileID: 0}
+    - target: {fileID: 609871495229839014, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
+      propertyPath: _sceneToLoad
+      value: SCENE_Top_Down_Movement 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
