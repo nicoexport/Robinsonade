@@ -69,7 +69,8 @@ namespace Player
             Move(target, direction, _pushTimeInSeconds);
             return true;
          }
-         return false;
+         Collide(direction);
+         return true;
       }
       
       private void CheckTileCollision(Vector3 target, Direction direction)
@@ -85,7 +86,11 @@ namespace Player
       private void Move(Vector3 target, Direction direction, float timeInSeconds)
       {
          _canMove = false;
-         _character.Move(target, GetVector2FromDirection(direction), timeInSeconds, () => { _canMove = true; });
+         _character.Move(target, GetVector2FromDirection(direction), timeInSeconds, () =>
+         {
+            _canMove = true;
+            TileManager.Instance.OnTileObjectsUpdate?.Invoke();
+         });
       }
 
       private void Collide(Direction direction)

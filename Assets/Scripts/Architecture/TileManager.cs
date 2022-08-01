@@ -7,6 +7,7 @@ namespace Architecture
 {
    public class TileManager : Singleton<TileManager>
    {
+      public Action OnTileObjectsUpdate;
       [SerializeField] private Tilemap[] _tilemaps;
       private readonly Dictionary<Vector3Int, TileObject> _tileObjects = new Dictionary<Vector3Int, TileObject>();
 
@@ -20,12 +21,21 @@ namespace Architecture
       {
          var pos = _tilemaps[0].WorldToCell(position);
          _tileObjects.Add(pos, tileObject);
+         //OnTileObjectsUpdate?.Invoke();
       }
 
       public void RemoveTileObject(TileObject tileObject)
       {
          var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
          _tileObjects.Remove(pos);
+         //OnTileObjectsUpdate?.Invoke();
+      }
+
+      public TileObject GetTileObject(Vector3Int position)
+      {
+         if (!_tileObjects.ContainsKey(position))
+            return null;
+         return _tileObjects[position];
       }
       
       public void SnapToGrid(GameObject obj)
@@ -80,6 +90,34 @@ namespace Architecture
                throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
          }
          return _tilemaps[0].GetCellCenterWorld(neighbour);
+      }
+      
+      public Vector3Int GetNeighbour(Vector3 position, Direction direction)
+      {
+         Vector3Int neighbour = default;
+         var playerTile = _tilemaps[0].WorldToCell(position);
+         switch (direction)
+         {
+            case Direction.North:
+               neighbour = playerTile + Vector3Int.up;
+               break;
+            case Direction.West:
+               neighbour = playerTile + Vector3Int.left;
+               break;
+            case Direction.South:
+               neighbour = playerTile + Vector3Int.down;
+               break;
+            case Direction.East:
+               neighbour = playerTile + Vector3Int.right;
+               break;
+            case Direction.None:
+               neighbour = playerTile;
+               break;
+            default:
+               throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+         }
+
+         return neighbour;
       }
    }
    

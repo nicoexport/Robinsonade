@@ -4,7 +4,7 @@ namespace Architecture
 {
    public abstract class TileObject : MonoBehaviour
    {
-      protected void Awake()
+      protected virtual void Awake()
       {
          TileManager.Instance.SnapToGrid(gameObject);
          RegisterTileObject();
@@ -23,6 +23,12 @@ namespace Architecture
       protected void UnregisterTileObject()
       {
          TileManager.Instance.RemoveTileObject(this);
+      }
+
+      public void Delete()
+      {
+         UnregisterTileObject();
+         Destroy(gameObject);
       }
    }
 }
