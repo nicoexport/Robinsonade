@@ -3713,7 +3713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3677869982283174890, guid: 3b18de4ce0c845544b29e85a0befe3d0, type: 3}
       propertyPath: orthographic size
-      value: 5.625
+      value: 8.4375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677869982283174890, guid: 3b18de4ce0c845544b29e85a0befe3d0, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3677869982283174890, guid: 3b18de4ce0c845544b29e85a0befe3d0, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -4124,10 +4128,6 @@ PrefabInstance:
     - target: {fileID: 410596770686813153, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
       propertyPath: m_Name
       value: P_Phantom
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075332494888224096, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
-      propertyPath: _sceneToUnload
-      value: Scene_Auto_Tiling_Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

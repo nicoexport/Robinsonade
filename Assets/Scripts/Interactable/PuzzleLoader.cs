@@ -6,8 +6,6 @@ public class PuzzleLoader : MonoBehaviour
     [SerializeField]
     private string _sceneToLoad;
     [SerializeField]
-    private string _sceneToUnload;
-    [SerializeField]
     private PuzzleSO _PuzzleToLoad;
     [SerializeField]
     private GameObject _PlayerToLoad;
@@ -19,11 +17,12 @@ public class PuzzleLoader : MonoBehaviour
 
     public void UnloadScene()
     {
-        SceneManager.UnloadSceneAsync(_sceneToUnload).completed += LoadScene;
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene()).completed += LoadScene;
     }
     
     public void LoadScene(AsyncOperation obj)
     {
+
         SceneManager.LoadSceneAsync(_sceneToLoad, LoadSceneMode.Additive).completed += OnSceneLoaded;
     }
 

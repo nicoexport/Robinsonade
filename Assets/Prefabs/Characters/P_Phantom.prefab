@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneToLoad: SCENE_Top_Down_Movement 1
   _PuzzleToLoad: {fileID: 11400000, guid: 5ddbb6a3ea21e0545b889208a762205b, type: 2}
-  _PlayerToLoad: {fileID: 8119618544098917516, guid: f6c3ec12736f6d847863323b1b796ea6, type: 3}
+  _PlayerToLoad: {fileID: 3195700931325418836, guid: 6713d2ee65e1b284397dedbf6f002874, type: 3}
 --- !u!1 &7901280482323521309
 GameObject:
   m_ObjectHideFlags: 0
