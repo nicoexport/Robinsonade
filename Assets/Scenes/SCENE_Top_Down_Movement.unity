@@ -1153,8 +1153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c0cebcd301407ca93a2a5068080199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveTimeInSeconds: 0.2
+  _moveTimeInSeconds: 0.23
   _pushTimeInSeconds: 0.3
+  _collideTimeInSeconds: 0.2
 --- !u!114 &2027035297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,7 +1168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cf85bdcbce44a2906a50648b913303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveTimeInSeconds: 0.15
   _moveRotation: 30
   _moveRotationCurve:
     serializedVersion: 2
@@ -1211,7 +1211,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _collideTimeInSeconds: 0.2
   _collisionMovementInMeter: 0.05
   OnCollide:
     m_PersistentCalls:
