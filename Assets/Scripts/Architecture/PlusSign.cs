@@ -7,9 +7,10 @@ namespace Architecture
    public class PlusSign : TileObject
    {
       [SerializeField] private TileObject _inputIcon1;
-      [SerializeField] private TileObject _inputIcon2;
+      [SerializeField] public TileObject _inputIcon2;
       [SerializeField] private GameObject _combinationPrefab;
       [SerializeField] private GameObject _combineVFXPrefab;
+      [SerializeField] private PlusSign _nextPlusSign;
       private readonly Vector3Int[] _neighbours = new Vector3Int[4];
       private bool _combined;
       private bool _setup = false;
@@ -78,7 +79,12 @@ namespace Architecture
         _inputIcon1.Delete();
         _inputIcon2.Delete();
         UnregisterTileObject();
-        Instantiate(_combinationPrefab, position, Quaternion.identity);
+        var comb = Instantiate(_combinationPrefab, position, Quaternion.identity);
+        if (_nextPlusSign != null)
+        {
+           var tileobj = comb.GetComponent<TileObject>();
+           _nextPlusSign._inputIcon2 = tileobj;
+        }
         Instantiate(_combineVFXPrefab, position, Quaternion.identity);
         Destroy(gameObject);
       }
