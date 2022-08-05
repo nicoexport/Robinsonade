@@ -12,6 +12,16 @@ namespace Architecture
         [SerializeField] private SceneSetupListSo _scenesToLoad;
 #endif
 
+        public void RemoveFromScenes(string sceneName)
+        {
+            _scenesToLoad.Remove(sceneName);
+        }
+
+        public void AddToScenes(string sceneName)
+        {
+            _scenesToLoad.Add(sceneName);
+        }
+
         protected override void Awake()
         {
             base.Awake();
@@ -37,12 +47,6 @@ namespace Architecture
             Time.timeScale = 1f;
         }
 
-        private void OnSceneUnloadComplete(AsyncOperation operation)
-        {
-            base.OnApplicationQuit();
-        }
-
-        private AsyncOperation unload;
         protected override void OnApplicationQuit()
         {
 #if UNITY_EDITOR

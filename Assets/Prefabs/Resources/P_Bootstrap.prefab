@@ -54,8 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5496764308119474465}
   - component: {fileID: 4553370296902789988}
+  - component: {fileID: 4135261201543417911}
   m_Layer: 0
-  m_Name: InitSceneLoader
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,6 +90,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scenesToLoad: {fileID: 11400000, guid: 550e394211c96a24fb570e57c4aaf183, type: 2}
+--- !u!114 &4135261201543417911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651364612278444631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4427beaf2963a3a488f00d9769dd6d25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneToLoad: SCENE_Top_Down_Movement 1
+  _puzzleToLoad: {fileID: 11400000, guid: 5ddbb6a3ea21e0545b889208a762205b, type: 2}
+  _playerToLoad: {fileID: 3195700931325418836, guid: 6713d2ee65e1b284397dedbf6f002874, type: 3}
 --- !u!1 &8039244479481855450
 GameObject:
   m_ObjectHideFlags: 0
