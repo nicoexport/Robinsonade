@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,7 +41,21 @@ namespace Architecture
         private void LoadPuzzle(PuzzleSO puzzleToLoad)
         {
             //TODO: LoadPuzzleFrom Scriptable Object
-            SpawnPlayerAtPosition(_puzzleToLoad.playerSpawnPosition);
+            TileMapPainter tileMapPainter = FindObjectOfType<TileMapPainter>();
+            foreach (var position in puzzleToLoad.wallTilePositions)
+            {
+                tileMapPainter.PaintTile(position,puzzleToLoad.wallTile);
+            }
+            SpawnPuzzleObjectAtPosition(puzzleToLoad.puzzleObjects);
+            SpawnPlayerAtPosition(puzzleToLoad.playerSpawnPosition);
+        }
+
+        private void SpawnPuzzleObjectAtPosition(PuzzleObject[] puzzleObjects)
+        {
+            foreach (var puzzleObject in puzzleObjects)
+            {
+                Instantiate(puzzleObject.tileGameObject, puzzleObject.spawnPosition, Quaternion.identity);
+            }
         }
 
         private void SpawnPlayerAtPosition(Vector3Int spawnPosition)

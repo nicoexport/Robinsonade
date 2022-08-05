@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: SO_Puzzle
   m_EditorClassIdentifier: 
   playerSpawnPosition: {x: 0, y: 0, z: 0}
-  tileObjects:
-  - tileObject: {fileID: 0}
-    spawnPosition: {x: 0, y: 0, z: 0}
+  wallTilePositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 1}
+  - {x: 1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 1}
+  - {x: 1, y: 1, z: 0}
+  - {x: 1, y: 1, z: 1}
+  wallTile: {fileID: 11400000, guid: f488e27c05d6dc34fbad9213da29f4fc, type: 2}
+  puzzleObjects:
+  - tileGameObject: {fileID: 1012933312014551635, guid: 730e4507dcccf7e4385f866fa7e63a89, type: 3}
+    spawnPosition: {x: 2, y: 2, z: 2}

@@ -6,5 +6,7 @@ using Architecture;
 public class PuzzleSO : ScriptableObject
 {
     public Vector3Int playerSpawnPosition;
-    public List<PuzzleObject> tileObjects = new List<PuzzleObject>();
+    public Vector3Int[] wallTilePositions;
+    public RuleTile wallTile;
+    public PuzzleObject[] puzzleObjects;
 }
