@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aad53b9489b94c2c8288d6e33d2e9000, type: 3}
-  m_Name: New NPC
+  m_Name: NPC_Gilbert
   m_EditorClassIdentifier: 
-  Name: 
-  _age: 0
+  Name: Gilbert
+  _age: 23
+  Profession: {fileID: 11400000, guid: 459c80bdaecdc4644ac653908be26227, type: 2}
   PrimaryPersonalityTrait: 3
   SecondaryPersonalityTrait: 3
   TertiaryPersonalityTrait: 5
+  Affections: 0b000000060000001e000000
+  Antipathies: 190000001100000005000000
+  _relationshipLevel: 7.78
