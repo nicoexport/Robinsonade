@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad53b9489b94c2c8288d6e33d2e9000, type: 3}
+  m_Name: New NPC
+  m_EditorClassIdentifier: 
+  Name: 
+  _age: 0
+  PrimaryPersonalityTrait: 3
+  SecondaryPersonalityTrait: 3
+  TertiaryPersonalityTrait: 5
