@@ -18,6 +18,8 @@ MonoBehaviour:
   PrimaryPersonalityTrait: 3
   SecondaryPersonalityTrait: 3
   TertiaryPersonalityTrait: 5
-  Affections: 0b000000060000001e000000
-  Antipathies: 190000001100000005000000
-  _relationshipLevel: 7.78
+  affections: 000000000000000000000000
+  affectionWeights: 000000000000000000000000
+  antipathies: 000000000000000000000000
+  antipathyWeights: 000000000000000000000000
+  _relationshipLevel: 0

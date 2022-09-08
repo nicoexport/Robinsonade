@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Puzzle
@@ -25,9 +23,13 @@ namespace Puzzle
       public PrimaryPersonalityTrait PrimaryPersonalityTrait;
       public SecondaryPersonalityTrait SecondaryPersonalityTrait;
       public TertiaryPersonalityTrait TertiaryPersonalityTrait;
-      [Space(10)] 
-      public List<SymbolCategory> Affections = new List<SymbolCategory>();
-      public List<SymbolCategory> Antipathies = new List<SymbolCategory>();
+      [Space(10)]
+      public SymbolCategory[] affections = new SymbolCategory[3];
+      public int[] affectionWeights = new int[3];
+      
+      [Space(10)]
+      public SymbolCategory[] antipathies = new SymbolCategory[3];
+      public int[] antipathyWeights = new int[3];
 
       [Header("Relationship")] 
       [Space(10)] 
