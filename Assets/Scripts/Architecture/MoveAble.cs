@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Architecture
 {
-   public class Pushable : TileObject
+   public class MoveAble : TileObject
    {
-      public bool Push(Direction direction, float timeInSeconds)
+      public bool Move(Direction direction, float timeInSeconds)
       {
          var target = TileManager.Instance.GetNeighbourPosition(transform.position, direction);
          if(TileManager.Instance.CheckCollision(target))
@@ -13,14 +13,15 @@ namespace Architecture
          var otherTileObj = TileManager.Instance.CheckForTileObject(target);
          if (otherTileObj != null)
          {
-            if (otherTileObj is Pushable otherPushable)
+            if (otherTileObj is MoveAble otherPushable)
             {
-               if (!otherPushable.Push(direction, timeInSeconds))
+               if (!otherPushable.Move(direction, timeInSeconds))
                {
                   return false;
                }
             }
          }
+         
          UnregisterTileObject();
          LeanTween.move(gameObject, target, timeInSeconds);
          RegisterTileObject(target);
