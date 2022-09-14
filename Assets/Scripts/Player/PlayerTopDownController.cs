@@ -48,7 +48,7 @@ namespace Player
          
          var direction = GetDirection(moveVector);
          var target = TileManager.Instance.GetNeighbourPosition(_transform.position, direction);
-         var tileObj = TileManager.Instance.CheckForTileObject(target);
+         var tileObj = TileManager.Instance.CheckForTileObjectAt(target);
          
          if (tileObj != null)
          {
@@ -74,7 +74,7 @@ namespace Player
       
       private void CheckTilemapCollision(Vector3 target, Direction direction)
       {
-         if (TileManager.Instance.CheckCollision(target))
+         if (TileManager.Instance.CheckCollisionAt(target))
          {
             Collide(direction);
             return;

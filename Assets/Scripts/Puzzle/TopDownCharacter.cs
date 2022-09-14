@@ -19,6 +19,8 @@ namespace Puzzle
       [SerializeField] private AnimationCurve _moveRotationCurve;
       [SerializeField] private float _collisionMovementInMeter;
       [SerializeField] private float _collisionTimeInSeconds;
+      [SerializeField] private SpriteRenderer _directionRenderer;
+      [SerializeField] private Sprite[] _directionSprites;
       
       public Stance CurrentStance { get; private set; } = Stance.Regular;
       private bool _canMove = true;
@@ -28,32 +30,32 @@ namespace Puzzle
          if (!_canMove)
             return;
          _canMove = false;
-         float moveTime;
+         UnregisterTileObject();
          Vector3 target = TileManager.Instance.GetNeighbourPosition(transform.position, targetDirection);
-
-         bool collidingWithWall = TileManager.Instance.CheckCollision(target);
-         if (collidingWithWall)
+         bool targetIsWall = TileManager.Instance.CheckCollisionAt(target);
+         var tileObjectAtTarget = TileManager.Instance.CheckForTileObjectAt(target);
+         if (targetIsWall || tileObjectAtTarget)
          {
             Collide(target);
             return;
          }
          
          if (CurrentStance == Stance.Regular)
-         {
+         { 
             UpdateFacingDirection(targetDirection);
-            moveTime = _moveTimeInSecondsRegular;
+            Move(target, _moveTimeInSecondsRegular);
+            return;
          }
-         else
+
+         if (CurrentStance == Stance.Pushing)
          {
-            moveTime = _moveTimeInSecondsPush;
+            Move(target, _moveTimeInSecondsPush);
          }
-         UnregisterTileObject();
-         Move(target, moveTime, FinishMove);
       }
 
-      private void Move(Vector3 target, float moveTime, Action callback)
+      private void Move(Vector3 target, float moveTime)
       {
-         LeanTween.move(gameObject, target, moveTime).setOnComplete(callback);
+         LeanTween.move(gameObject, target, moveTime).setOnComplete(FinishMove);
          LeanTween.rotateZ(gameObject, _moveRotation, moveTime).setEase(_moveRotationCurve);
       }
 
@@ -66,11 +68,8 @@ namespace Puzzle
       private void Collide(Vector3 target)
       {
          Vector3 collisionVector = target - transform.position;
-         LeanTween.move(gameObject, transform.position + (Vector3)collisionVector * _collisionMovementInMeter,
-            _collisionTimeInSeconds).setEasePunch().setOnComplete(() =>
-         {
-            _canMove = true;
-         });
+         LeanTween.move(gameObject, transform.position + (Vector3) collisionVector * _collisionMovementInMeter,
+            _collisionTimeInSeconds).setEasePunch().setOnComplete(FinishMove);
       }
       
       private void UpdateFacingDirection(Direction direction)
@@ -78,6 +77,7 @@ namespace Puzzle
          if (Equals(_facingDirection, direction))
             return;
          _facingDirection = direction;
+         _directionRenderer.sprite = _directionSprites[(int)direction];
       }
 
       public void SetStance(Stance stance)

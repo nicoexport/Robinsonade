@@ -34,7 +34,7 @@ namespace Architecture
          obj.transform.position = _tilemaps[0].GetCellCenterWorld(pos);
       }
 
-      public bool CheckCollision(Vector3 position)
+      public bool CheckCollisionAt(Vector3 position)
       {
          foreach (var map in _tilemaps)
          {
@@ -47,7 +47,7 @@ namespace Architecture
          return false;
       }
 
-      public TileObject CheckForTileObject(Vector3 position)
+      public TileObject CheckForTileObjectAt(Vector3 position)
       {
          var gridPos = _tilemaps[0].WorldToCell(position);
          if (_tileObjects.ContainsKey(gridPos))
