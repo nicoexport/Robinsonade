@@ -13,10 +13,13 @@ namespace Puzzle
       }
 
       [SerializeField] private Direction _facingDirection;
-      [SerializeField] private float _moveTimeRegular;
-      [SerializeField] private float _moveTimePush;
+      [SerializeField] private float _moveTimeInSecondsRegular;
+      [SerializeField] private float _moveTimeInSecondsPush;
       [SerializeField] private float _moveRotation;
       [SerializeField] private AnimationCurve _moveRotationCurve;
+      [SerializeField] private float _collisionMovementInMeter;
+      [SerializeField] private float _collisionTimeInSeconds;
+      
       public Stance CurrentStance { get; private set; } = Stance.Regular;
       private bool _canMove = true;
 
@@ -27,15 +30,22 @@ namespace Puzzle
          _canMove = false;
          float moveTime;
          Vector3 target = TileManager.Instance.GetNeighbourPosition(transform.position, targetDirection);
+
+         bool collidingWithWall = TileManager.Instance.CheckCollision(target);
+         if (collidingWithWall)
+         {
+            Collide(target);
+            return;
+         }
          
          if (CurrentStance == Stance.Regular)
          {
             UpdateFacingDirection(targetDirection);
-            moveTime = _moveTimeRegular;
+            moveTime = _moveTimeInSecondsRegular;
          }
          else
          {
-            moveTime = _moveTimePush;
+            moveTime = _moveTimeInSecondsPush;
          }
          UnregisterTileObject();
          Move(target, moveTime, FinishMove);
@@ -52,13 +62,24 @@ namespace Puzzle
          RegisterTileObject();
          _canMove = true;
       }
+
+      private void Collide(Vector3 target)
+      {
+         Vector3 collisionVector = target - transform.position;
+         LeanTween.move(gameObject, transform.position + (Vector3)collisionVector * _collisionMovementInMeter,
+            _collisionTimeInSeconds).setEasePunch().setOnComplete(() =>
+         {
+            _canMove = true;
+         });
+      }
+      
       private void UpdateFacingDirection(Direction direction)
       {
          if (Equals(_facingDirection, direction))
             return;
          _facingDirection = direction;
       }
-      
+
       public void SetStance(Stance stance)
       {
          if (Equals(CurrentStance, stance))
