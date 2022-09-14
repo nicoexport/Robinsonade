@@ -1115,6 +1115,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _collisionMovementInMeter: 0.05
   _collisionTimeInSeconds: 0.15
+  _pushDepth: 2
   _directionRenderer: {fileID: 2088031453}
   _directionSprites:
   - {fileID: -233673052, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}

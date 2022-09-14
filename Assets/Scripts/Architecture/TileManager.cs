@@ -47,7 +47,7 @@ namespace Architecture
          return false;
       }
 
-      public TileObject CheckForTileObjectAt(Vector3 position)
+      public TileObject GetTileObjectAt(Vector3 position)
       {
          var gridPos = _tilemaps[0].WorldToCell(position);
          if (_tileObjects.ContainsKey(gridPos))

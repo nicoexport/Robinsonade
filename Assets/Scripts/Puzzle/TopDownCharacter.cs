@@ -19,11 +19,15 @@ namespace Puzzle
       [SerializeField] private AnimationCurve _moveRotationCurve;
       [SerializeField] private float _collisionMovementInMeter;
       [SerializeField] private float _collisionTimeInSeconds;
+      [SerializeField] private int _pushDepth = 1;
       [SerializeField] private SpriteRenderer _directionRenderer;
       [SerializeField] private Sprite[] _directionSprites;
       
       public Stance CurrentStance { get; private set; } = Stance.Regular;
       private bool _canMove = true;
+
+      private readonly Vector3[] VectorFromDirection =
+         new[] {Vector3.up, Vector3.left, Vector3.down, Vector3.right, Vector3.zero};
 
       public void TryMoveTo(Direction targetDirection)
       {
@@ -31,25 +35,44 @@ namespace Puzzle
             return;
          _canMove = false;
          UnregisterTileObject();
-         Vector3 target = TileManager.Instance.GetNeighbourPosition(transform.position, targetDirection);
-         bool targetIsWall = TileManager.Instance.CheckCollisionAt(target);
-         var tileObjectAtTarget = TileManager.Instance.CheckForTileObjectAt(target);
-         if (targetIsWall || tileObjectAtTarget)
-         {
-            Collide(target);
-            return;
-         }
+         Vector3 moveTarget = TileManager.Instance.GetNeighbourPosition(transform.position, targetDirection);
+         bool moveTargetIsWall = TileManager.Instance.CheckCollisionAt(moveTarget);
+         var tileObjectAtMoveTarget = TileManager.Instance.GetTileObjectAt(moveTarget);
          
          if (CurrentStance == Stance.Regular)
-         { 
+         {
             UpdateFacingDirection(targetDirection);
-            Move(target, _moveTimeInSecondsRegular);
+            
+            if (moveTargetIsWall || tileObjectAtMoveTarget)
+            {
+               Collide(moveTarget);
+               return;
+            }
+            
+            Move(moveTarget, _moveTimeInSecondsRegular);
             return;
          }
 
          if (CurrentStance == Stance.Pushing)
          {
-            Move(target, _moveTimeInSecondsPush);
+            Vector3 facingTarget = transform.position + VectorFromDirection[(int) _facingDirection];
+            var facingTileObject = TileManager.Instance.GetTileObjectAt(facingTarget);
+            
+            if (moveTargetIsWall || (tileObjectAtMoveTarget) && (tileObjectAtMoveTarget != facingTileObject))
+            {
+               Collide(moveTarget);
+               return;
+            }
+            
+            if (facingTileObject is MoveAble moveAble)
+            {
+               if (!moveAble.Move(targetDirection, _moveTimeInSecondsPush, _pushDepth))
+               {
+                  Collide(moveTarget);
+                  return;
+               }
+            }
+            Move(moveTarget, _moveTimeInSecondsPush);
          }
       }
 
