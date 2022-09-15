@@ -23,8 +23,9 @@ namespace Puzzle
       [SerializeField] private SpriteRenderer _directionRenderer;
       [SerializeField] private Sprite[] _directionSprites;
       [SerializeField] private bool _canPushSideways;
-      
-      public Stance CurrentStance { get; private set; } = Stance.Regular;
+      [SerializeField] private bool _needsPushTarget;
+
+      private Stance _currentStance = Stance.Regular;
       private bool _canMove = true;
 
       private readonly Vector3[] VectorFromDirection = 
@@ -42,7 +43,7 @@ namespace Puzzle
          bool moveTargetIsWall = TileManager.Instance.CheckCollisionAt(moveTarget);
          var tileObjectAtMoveTarget = TileManager.Instance.GetTileObjectAt(moveTarget);
          
-         if (CurrentStance == Stance.Regular)
+         if (_currentStance == Stance.Regular)
          {
             UpdateFacingDirection(targetDirection);
             
@@ -56,7 +57,7 @@ namespace Puzzle
             return;
          }
 
-         if (CurrentStance == Stance.Pushing)
+         if (_currentStance == Stance.Pushing)
          {
             Vector3 facingTarget = transform.position + VectorFromDirection[(int) _facingDirection];
             var facingTileObject = TileManager.Instance.GetTileObjectAt(facingTarget);
@@ -110,7 +111,7 @@ namespace Puzzle
 
       private bool ValidateMoveDirection(Direction targetDirection)
       {
-         if (CurrentStance == Stance.Regular)
+         if (_currentStance == Stance.Regular)
             return true;
 
          if (_canPushSideways)
@@ -145,9 +146,17 @@ namespace Puzzle
 
       public void SetStance(Stance stance)
       {
-         if (Equals(CurrentStance, stance))
+         if (Equals(_currentStance, stance))
             return;
-         CurrentStance = stance;
+         
+         if (_needsPushTarget && stance == Stance.Pushing)
+         {
+            Vector3 targetPosition = TileManager.Instance.GetNeighbourPosition(transform.position, _facingDirection);
+            var targetObject = TileManager.Instance.GetTileObjectAt(targetPosition);
+            if(!targetObject)
+               return;
+         }
+         _currentStance = stance;
       }
    }
 }
