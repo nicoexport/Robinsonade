@@ -22,16 +22,19 @@ namespace Puzzle
       [SerializeField] private int _pushDepth = 1;
       [SerializeField] private SpriteRenderer _directionRenderer;
       [SerializeField] private Sprite[] _directionSprites;
+      [SerializeField] private bool _canPushSideways;
       
       public Stance CurrentStance { get; private set; } = Stance.Regular;
       private bool _canMove = true;
 
-      private readonly Vector3[] VectorFromDirection =
-         new[] {Vector3.up, Vector3.left, Vector3.down, Vector3.right, Vector3.zero};
+      private readonly Vector3[] VectorFromDirection = 
+         new [] {Vector3.up, Vector3.left, Vector3.down, Vector3.right, Vector3.zero};
 
       public void TryMoveTo(Direction targetDirection)
       {
          if (!_canMove)
+            return;
+         if (!ValidateMoveDirection(targetDirection))
             return;
          _canMove = false;
          UnregisterTileObject();
@@ -103,6 +106,41 @@ namespace Puzzle
          if ((int) direction > _directionSprites.Length)
             return;
          _directionRenderer.sprite = _directionSprites[(int)direction];
+      }
+
+      private bool ValidateMoveDirection(Direction targetDirection)
+      {
+         if (CurrentStance == Stance.Regular)
+            return true;
+
+         if (_canPushSideways)
+            return true;
+         
+         switch (_facingDirection)
+         {
+            case Direction.North:
+               if (targetDirection != Direction.North && targetDirection != Direction.South)
+                  return false;
+               break;
+            case Direction.West:
+               if (targetDirection != Direction.West && targetDirection != Direction.East)
+                  return false;
+               break;
+            case Direction.South:
+               if (targetDirection != Direction.North && targetDirection != Direction.South)
+                  return false;
+               break;
+            case Direction.East:
+               if (targetDirection != Direction.West && targetDirection != Direction.East)
+                  return false;
+               break;
+            case Direction.None:
+               return false;
+               break;
+            default:
+               return false;
+         }
+         return true;
       }
 
       public void SetStance(Stance stance)
