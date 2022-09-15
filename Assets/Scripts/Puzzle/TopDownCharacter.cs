@@ -100,6 +100,8 @@ namespace Puzzle
          if (Equals(_facingDirection, direction))
             return;
          _facingDirection = direction;
+         if ((int) direction > _directionSprites.Length)
+            return;
          _directionRenderer.sprite = _directionSprites[(int)direction];
       }
 
