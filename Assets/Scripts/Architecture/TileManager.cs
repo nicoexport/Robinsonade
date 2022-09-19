@@ -30,6 +30,26 @@ namespace Architecture
             //InitializeTileObjects();
         }
 
+      public bool CheckCollisionAt(Vector3 position)
+      {
+         foreach (var map in _tilemaps)
+         {
+            var gridPosition = map.WorldToCell(position);
+            if (!map.HasTile(gridPosition)) continue;
+            var colType = map.GetColliderType(gridPosition);
+            if (colType != Tile.ColliderType.None)
+               return true;
+         }
+         return false;
+      }
+
+      public TileObject GetTileObjectAt(Vector3 position)
+      {
+         var gridPos = _tilemaps[0].WorldToCell(position);
+         if (_tileObjects.ContainsKey(gridPos))
+            return _tileObjects[gridPos];
+         return null;
+      }
         private void InitializeSockets()
         {
             foreach (var socket in _sockets)

@@ -204,6 +204,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Push"",
+                    ""type"": ""Button"",
+                    ""id"": ""020f9a32-8f61-4298-b4dc-1a31f203b595"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -371,6 +380,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1144051-1f05-4462-ad5c-efdf6013b216"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Push"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -407,6 +427,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Topdown
         m_Topdown = asset.FindActionMap("Topdown", throwIfNotFound: true);
         m_Topdown_Move = m_Topdown.FindAction("Move", throwIfNotFound: true);
+        m_Topdown_Push = m_Topdown.FindAction("Push", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -508,11 +529,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Topdown;
     private ITopdownActions m_TopdownActionsCallbackInterface;
     private readonly InputAction m_Topdown_Move;
+    private readonly InputAction m_Topdown_Push;
     public struct TopdownActions
     {
         private @PlayerInputActions m_Wrapper;
         public TopdownActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Topdown_Move;
+        public InputAction @Push => m_Wrapper.m_Topdown_Push;
         public InputActionMap Get() { return m_Wrapper.m_Topdown; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -525,6 +548,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_TopdownActionsCallbackInterface.OnMove;
+                @Push.started -= m_Wrapper.m_TopdownActionsCallbackInterface.OnPush;
+                @Push.performed -= m_Wrapper.m_TopdownActionsCallbackInterface.OnPush;
+                @Push.canceled -= m_Wrapper.m_TopdownActionsCallbackInterface.OnPush;
             }
             m_Wrapper.m_TopdownActionsCallbackInterface = instance;
             if (instance != null)
@@ -532,6 +558,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Push.started += instance.OnPush;
+                @Push.performed += instance.OnPush;
+                @Push.canceled += instance.OnPush;
             }
         }
     }
@@ -562,5 +591,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface ITopdownActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnPush(InputAction.CallbackContext context);
     }
 }
