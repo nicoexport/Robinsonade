@@ -48,20 +48,20 @@ namespace Player
          
          var direction = GetDirection(moveVector);
          var target = TileManager.Instance.GetNeighbourPosition(_transform.position, direction);
-         var tileObj = TileManager.Instance.CheckForTileObject(target);
+         var tileObj = TileManager.Instance.GetTileObjectAt(target);
          
          if (tileObj != null)
          {
             if (CheckTileObjectCollision(tileObj, direction, target)) return;
          }
-         CheckTileCollision(target, direction);
+         CheckTilemapCollision(target, direction);
       }
 
       private bool CheckTileObjectCollision(TileObject tileObj, Direction direction, Vector3 target)
       {
-         if (tileObj is Pushable pushable)
+         if (tileObj is MoveAble pushable)
          {
-            if (!pushable.Push(direction, _pushTimeInSeconds))
+            if (!pushable.Move(direction, _pushTimeInSeconds, 1))
             {
                Collide(direction);
                return true;
@@ -72,9 +72,9 @@ namespace Player
          return false;
       }
       
-      private void CheckTileCollision(Vector3 target, Direction direction)
+      private void CheckTilemapCollision(Vector3 target, Direction direction)
       {
-         if (TileManager.Instance.CheckCollision(target))
+         if (TileManager.Instance.CheckCollisionAt(target))
          {
             Collide(direction);
             return;

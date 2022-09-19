@@ -30,7 +30,5 @@ namespace Player
          OnCollide.Invoke();
          LeanTween.move(gameObject, transform.position + (Vector3)direction * _collisionMovementInMeter, timeInSeconds).setEasePunch().setOnComplete(callback);
       }
-      
-      
    }
 }
