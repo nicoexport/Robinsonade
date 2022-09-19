@@ -6,10 +6,44 @@ namespace Architecture
     {
         public SocketType socketType;
 
+        [HideInInspector] public TileObject socketedTileObject;
+        [HideInInspector] public bool canBePushedOnto = true;
+
+        private void OnValidate()
+        {
+            switch (socketType)
+            {
+                case SocketType.Loose:
+                    canBePushedOnto = true;
+                    break;
+                case SocketType.Locked:
+                    canBePushedOnto = true;
+                    break;
+                case SocketType.DialogLocked:
+                    canBePushedOnto = false;
+                    break;
+                case SocketType.Identity:
+                    canBePushedOnto = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void Initialize()
         {
             TileManager.Instance.SnapToGrid(gameObject);
             RegisterSocket();
+        }
+
+        public void UnlockSocket()
+        {
+            canBePushedOnto = true;
+        }
+
+        public void LockSocket()
+        {
+            canBePushedOnto = false;
         }
 
         protected void RegisterSocket()

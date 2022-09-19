@@ -20,49 +20,11 @@ namespace Architecture
             {
                 socket.Initialize();
             }
-            //InitializeSockets();
 
             var tileObjects = FindObjectsOfType<TileObject>();
             foreach (var tileObject in tileObjects)
             {
                 tileObject.Initialize();
-            }
-            //InitializeTileObjects();
-        }
-
-      public bool CheckCollisionAt(Vector3 position)
-      {
-         foreach (var map in _tilemaps)
-         {
-            var gridPosition = map.WorldToCell(position);
-            if (!map.HasTile(gridPosition)) continue;
-            var colType = map.GetColliderType(gridPosition);
-            if (colType != Tile.ColliderType.None)
-               return true;
-         }
-         return false;
-      }
-
-      public TileObject GetTileObjectAt(Vector3 position)
-      {
-         var gridPos = _tilemaps[0].WorldToCell(position);
-         if (_tileObjects.ContainsKey(gridPos))
-            return _tileObjects[gridPos];
-         return null;
-      }
-        private void InitializeSockets()
-        {
-            foreach (var socket in _sockets)
-            {
-                socket.Value.Initialize();
-            }
-        }
-
-        private void InitializeTileObjects()
-        {
-            foreach (var tileObject in _tileObjects)
-            {
-                tileObject.Value.Initialize();
             }
         }
 
@@ -89,10 +51,7 @@ namespace Architecture
             var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
             _tileObjects.Add(pos, tileObject);
             if (_sockets.ContainsKey(pos))
-            {
-                tileObject.isSocketed = true;
-                tileObject.socket = _sockets[pos];
-            }
+                tileObject.RegisterTileObjectInSocket(_sockets[pos]);
         }
 
         public void AddTileObject(TileObject tileObject, Vector3 position)
@@ -100,18 +59,45 @@ namespace Architecture
             var pos = _tilemaps[0].WorldToCell(position);
             _tileObjects.Add(pos, tileObject);
             if (_sockets.ContainsKey(pos))
-            {
-                tileObject.isSocketed = true;
-                tileObject.socket = _sockets[pos];
-            }
+                tileObject.RegisterTileObjectInSocket(_sockets[pos]);
+
         }
 
         public void RemoveTileObject(TileObject tileObject)
         {
             var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
             _tileObjects.Remove(pos);
-            tileObject.isSocketed = false;
-            tileObject.socket = null;
+            if (_sockets.ContainsKey(pos))
+                tileObject.UnRegisterTileObjectInSocket(_sockets[pos]);
+        }
+
+        public bool CheckCollisionAt(Vector3 position)
+        {
+            foreach (var map in _tilemaps)
+            {
+                var gridPosition = map.WorldToCell(position);
+                if (!map.HasTile(gridPosition)) continue;
+                var colType = map.GetColliderType(gridPosition);
+                if (colType != Tile.ColliderType.None)
+                    return true;
+            }
+            return false;
+        }
+
+        public TileObject GetTileObjectAt(Vector3 position)
+        {
+            var gridPos = _tilemaps[0].WorldToCell(position);
+            if (_tileObjects.ContainsKey(gridPos))
+                return _tileObjects[gridPos];
+            return null;
+        }
+
+        public Socket GetSocketAt(Vector3 position)
+        {
+            var gridpos = _tilemaps[0].WorldToCell(position);
+            if (_sockets.ContainsKey(gridpos))
+                return _sockets[gridpos];
+            return null;
         }
 
         public void SnapToGrid(GameObject obj)
@@ -166,6 +152,18 @@ namespace Architecture
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
             }
             return _tilemaps[0].GetCellCenterWorld(neighbour);
+        }
+
+        public void EvaluateSocketedTileObjects()
+        {
+            Debug.Log("evaluate");
+            foreach (var socket in _sockets)
+            {
+                if (socket.Value.socketedTileObject)
+                {
+                    //TODO: evaluate socketed Tileobjects
+                }
+            }
         }
     }
 

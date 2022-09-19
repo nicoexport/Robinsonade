@@ -13,6 +13,28 @@ namespace Architecture
             RegisterTileObject();
         }
 
+        public virtual void RegisterTileObjectInSocket(Socket socket)
+        {
+            if (socket)
+            {
+                isSocketed = true;
+                this.socket = socket;
+                socket.socketedTileObject = this;
+            }
+                TileManager.Instance.EvaluateSocketedTileObjects();
+        }
+
+        public virtual void UnRegisterTileObjectInSocket(Socket socket)
+        {
+            if (socket)
+            {
+                isSocketed = false;
+                this.socket = null;
+                socket.socketedTileObject = null;
+            }
+            TileManager.Instance.EvaluateSocketedTileObjects();
+        }
+
         protected void RegisterTileObject()
         {
             TileManager.Instance.AddTileObject(this);
