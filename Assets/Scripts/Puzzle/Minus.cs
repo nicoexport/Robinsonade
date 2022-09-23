@@ -16,8 +16,8 @@ namespace Puzzle
          int minuendIndex = GetOpposingIndex(subtrahendIndex);
 
          if (_symbols[minuendIndex] == null || _symbols[subtrahendIndex] == null) return result;
-         result += (int) _symbols[minuendIndex].SymbolData.Impact - 1;
-         result -= (int) _symbols[subtrahendIndex].SymbolData.Impact - 1;
+         result += _symbols[minuendIndex].Impact;
+         result -= _symbols[subtrahendIndex].Impact;
          return result;
       }
       
