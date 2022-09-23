@@ -137,7 +137,6 @@ namespace Puzzle
                break;
             case Direction.None:
                return false;
-               break;
             default:
                return false;
          }
