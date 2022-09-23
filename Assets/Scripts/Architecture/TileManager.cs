@@ -151,12 +151,12 @@ namespace Architecture
         {
             Debug.Log("evaluate");
             var operators = FindObjectsOfType<Operator>();
+            int sum = 0;
             foreach (var op in operators)
             {
-                int sum = 0;
                 sum += op.Evaluate();
-                Debug.Log("DIALOGLEVEL: " + sum);
             }
+            Debug.Log("DIALOGLEVEL: " + sum);
         }
     }
 
