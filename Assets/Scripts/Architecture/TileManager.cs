@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Puzzle;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -119,18 +120,10 @@ namespace Architecture
             return false;
         }
 
-        public TileObject CheckForTileObject(Vector3 position)
-        {
-            var gridPos = _tilemaps[0].WorldToCell(position);
-            if (_tileObjects.ContainsKey(gridPos))
-                return _tileObjects[gridPos];
-            return null;
-        }
-
-        public Vector3 GetNeighbourPosition(Vector3 position, Direction direction)
+        public Vector3 GetNeighbourPosition(Vector3 positionFrom, Direction direction)
         {
             Vector3Int neighbour = default;
-            var playerTile = _tilemaps[0].WorldToCell(position);
+            var playerTile = _tilemaps[0].WorldToCell(positionFrom);
             switch (direction)
             {
                 case Direction.North:
@@ -157,12 +150,12 @@ namespace Architecture
         public void EvaluateSocketedTileObjects()
         {
             Debug.Log("evaluate");
-            foreach (var socket in _sockets)
+            var operators = FindObjectsOfType<Operator>();
+            foreach (var op in operators)
             {
-                if (socket.Value.socketedTileObject)
-                {
-                    //TODO: evaluate socketed Tileobjects
-                }
+                int sum = 0;
+                sum += op.Evaluate();
+                Debug.Log("DIALOGLEVEL: " + sum);
             }
         }
     }
