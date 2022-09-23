@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SO_SymbolData_Empty
   m_EditorClassIdentifier: 
   <SymbolValue>k__BackingField: 0
-  <Sprite>k__BackingField: {fileID: 610611389, guid: e9731b693829cd54eb268ba2a39835c9, type: 3}
+  <Sprite>k__BackingField: {fileID: 0}

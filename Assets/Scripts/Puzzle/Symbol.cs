@@ -11,7 +11,6 @@ namespace Puzzle
       public SymbolData SymbolData { get; private set; } = default;
       private SpriteRenderer _renderer = default;
 
-
       private void Awake()
       {
          GetRenderer();
@@ -26,7 +25,6 @@ namespace Puzzle
             _renderer = rend;
          }
       }
-
 
 #if UNITY_EDITOR
       private void OnValidate()
