@@ -45,7 +45,7 @@ namespace Architecture
 
         public void SetDialogLevel(float value)
         {
-            _currentDialogLevel = value * 10;
+            _currentDialogLevel = Mathf.Clamp( value * 10f, 0f, _maxDialogLevel);
             AdjustDialogLevelUI();
         }
 
