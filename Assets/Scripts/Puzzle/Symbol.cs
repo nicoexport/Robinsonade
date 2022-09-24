@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Puzzle
@@ -14,7 +13,7 @@ namespace Puzzle
          get
          {
             if (_symbolData)
-               return (int) _symbolData.Impact - 1;
+               return (int) (_symbolData.Impact - 1);
             else
             {
                return 0;

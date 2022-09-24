@@ -156,7 +156,7 @@ namespace Architecture
             {
                 sum += op.Evaluate();
             }
-            Debug.Log("DIALOGLEVEL: " + sum);
+            DialogLevelManager.Instance.SetDialogLevel(sum);
         }
     }
 
