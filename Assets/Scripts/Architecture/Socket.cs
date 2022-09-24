@@ -8,6 +8,7 @@ namespace Architecture
 
         [HideInInspector] public TileObject socketedTileObject;
         [HideInInspector] public bool canBePushedOnto = true;
+        [HideInInspector] public bool isLocked = false;
 
         private void OnValidate()
         {
@@ -15,15 +16,19 @@ namespace Architecture
             {
                 case SocketType.Loose:
                     canBePushedOnto = true;
+                    isLocked = false;
                     break;
                 case SocketType.Locked:
                     canBePushedOnto = true;
+                    isLocked = false;
                     break;
                 case SocketType.DialogLocked:
-                    canBePushedOnto = false;
+                    canBePushedOnto = true;
+                    isLocked = true;
                     break;
                 case SocketType.Identity:
                     canBePushedOnto = false;
+                    isLocked = false;
                     break;
                 default:
                     break;
@@ -39,11 +44,13 @@ namespace Architecture
         public void UnlockSocket()
         {
             canBePushedOnto = true;
+            isLocked = false;
         }
 
         public void LockSocket()
         {
             canBePushedOnto = false;
+            isLocked = true;
         }
 
         protected void RegisterSocket()

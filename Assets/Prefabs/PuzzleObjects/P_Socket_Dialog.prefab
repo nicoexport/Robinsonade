@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7999096379975674726}
   - component: {fileID: 7999096379975674727}
   - component: {fileID: 7999096379975674724}
+  - component: {fileID: 1296345950}
   m_Layer: 0
   m_Name: P_Socket_Dialog
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7999096379975674727
 SpriteRenderer:
@@ -98,4 +99,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socketType: 2
-  canBePushedOnto: 0
+  socketedTileObject: {fileID: 0}
+  canBePushedOnto: 1
+  isLocked: 1
+--- !u!114 &1296345950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999096379975674725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625815072279502499374cbc1af04d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 15
