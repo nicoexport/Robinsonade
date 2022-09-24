@@ -14,6 +14,10 @@ namespace Architecture
                 isSocketed = true;
                 this.socket = socket;
                 socket.socketedTileObject = this;
+                if (socket.socketType == SocketType.Locked)
+                {
+                    socket.LockSocket();
+                }
             }
             TileManager.Instance.EvaluateSocketedTileObjects();
         }
@@ -69,7 +73,7 @@ namespace Architecture
 
         public bool IsLocked()
         {
-            if (socket?.socketType == SocketType.Locked)
+            if (socket && socket.isLocked)
             {
                 return true;
             }

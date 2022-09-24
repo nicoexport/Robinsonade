@@ -62,7 +62,7 @@ namespace Puzzle
             Vector3 facingTarget = transform.position + VectorFromDirection[(int) _facingDirection];
             var facingTileObject = TileManager.Instance.GetTileObjectAt(facingTarget);
             
-            if (moveTargetIsWall || (tileObjectAtMoveTarget) && (tileObjectAtMoveTarget != facingTileObject))
+            if (moveTargetIsWall || (tileObjectAtMoveTarget) && (tileObjectAtMoveTarget != facingTileObject) || facingTileObject is not MoveAble)
             {
                Collide(moveTarget);
                return;

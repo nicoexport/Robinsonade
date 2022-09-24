@@ -1,5 +1,4 @@
 using Architecture;
-using System;
 using UnityEngine;
 
 public abstract class DialogLevelReactive : TileObject
@@ -7,9 +6,14 @@ public abstract class DialogLevelReactive : TileObject
     [SerializeField]
     private float threshold;
 
-    private void Awake()
+    private void OnEnable()
     {
         DialogLevelManager.Instance.onSetDialogLevel += CheckForReaction;
+    }
+
+    private void OnDisable()
+    {
+        DialogLevelManager.Instance.onSetDialogLevel -= CheckForReaction;
     }
 
     private void CheckForReaction(float dialogLevel)

@@ -21,7 +21,7 @@ namespace Architecture
 
         private DialogLevelUI _currentDialogLevelUI;
 
-        private void Start()
+        private void OnEnable()
         {
             _currentDialogLevelUI = Instantiate(dialogLevelUI_Prefab);
 
@@ -31,7 +31,7 @@ namespace Architecture
             _currentDialogLevel = 0;
             SetUI(_currentDialogLevel);
 
-            // StartCoroutine(UpdateValue());
+            //StartCoroutine(UpdateValue());
         }
 
         IEnumerator UpdateValue()
@@ -39,7 +39,7 @@ namespace Architecture
             while (true)
             {
                 yield return new WaitForSeconds(5f);
-                SetDialogLevel(UnityEngine.Random.value * 100);
+                SetDialogLevel(UnityEngine.Random.value * 10);
             }
         }
 
