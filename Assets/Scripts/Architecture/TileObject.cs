@@ -4,7 +4,8 @@ namespace Architecture
 {
     public abstract class TileObject : MonoBehaviour
     {
-        public void Initialize()
+        protected bool shouldInitialize = true;
+        public virtual void Initialize()
         {
             TileManager.Instance.SnapToGrid(gameObject);
             RegisterTileObject();
@@ -20,17 +21,17 @@ namespace Architecture
 
         }
 
-        protected void RegisterTileObject()
+        public void RegisterTileObject()
         {
             TileManager.Instance.AddTileObject(this);
         }
 
-        protected void RegisterTileObject(Vector3 position)
+        public void RegisterTileObject(Vector3 position)
         {
             TileManager.Instance.AddTileObject(this, position);
         }
 
-        protected void UnregisterTileObject()
+        public void UnregisterTileObject()
         {
             TileManager.Instance.RemoveTileObject(this);
         }
