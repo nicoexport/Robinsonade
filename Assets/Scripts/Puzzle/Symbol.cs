@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Puzzle
@@ -7,10 +6,24 @@ namespace Puzzle
    {
       [SerializeField] 
       private Sprite _defaultSprite;
-      [field: SerializeField]
-      public SymbolData SymbolData { get; private set; } = default;
-      private SpriteRenderer _renderer = default;
+      [field: SerializeField] private SymbolData _symbolData;
 
+      public int Impact
+      {
+         get
+         {
+            if (_symbolData)
+               return (int) (_symbolData.Impact - 1);
+            else
+            {
+               return 0;
+            }
+         }
+      }
+
+      private SpriteRenderer _renderer = default;
+      
+      
       private void Awake()
       {
          GetRenderer();
@@ -25,6 +38,8 @@ namespace Puzzle
             _renderer = rend;
          }
       }
+      
+      
 
 #if UNITY_EDITOR
       private void OnValidate()
@@ -53,20 +68,20 @@ namespace Puzzle
 
       private void SetSprite()
       {
-         if (!SymbolData)
+         if (!_symbolData)
          {
             _renderer.sprite = _defaultSprite;
          }
          else
          {
-            if (!SymbolData.Sprite)
+            if (!_symbolData.Sprite)
             {
                Debug.LogWarning("No Sprite in Symbol Data at: " + gameObject.name);
                _renderer.sprite = _defaultSprite;
             }
             else
             {
-               _renderer.sprite = SymbolData.Sprite;
+               _renderer.sprite = _symbolData.Sprite;
             }
          }
       }
