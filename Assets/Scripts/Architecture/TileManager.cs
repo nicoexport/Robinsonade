@@ -51,7 +51,7 @@ namespace Architecture
         {
             var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
             _tileObjects.Add(pos, tileObject);
-            if (_sockets.ContainsKey(pos))
+            if (_sockets.ContainsKey(pos) && tileObject is MoveAble)
                 tileObject.RegisterTileObjectInSocket(_sockets[pos]);
         }
 
@@ -59,7 +59,7 @@ namespace Architecture
         {
             var pos = _tilemaps[0].WorldToCell(position);
             _tileObjects.Add(pos, tileObject);
-            if (_sockets.ContainsKey(pos))
+            if (_sockets.ContainsKey(pos) && tileObject is MoveAble)
                 tileObject.RegisterTileObjectInSocket(_sockets[pos]);
 
         }
@@ -68,7 +68,7 @@ namespace Architecture
         {
             var pos = _tilemaps[0].WorldToCell(tileObject.transform.position);
             _tileObjects.Remove(pos);
-            if (_sockets.ContainsKey(pos))
+            if (_sockets.ContainsKey(pos) && tileObject is MoveAble)
                 tileObject.UnRegisterTileObjectInSocket(_sockets[pos]);
         }
 

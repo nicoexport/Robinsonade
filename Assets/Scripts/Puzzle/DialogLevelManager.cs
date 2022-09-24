@@ -6,16 +6,12 @@ namespace Architecture
 {
     public class DialogLevelManager : Singleton<DialogLevelManager>
     {
-        public event Action<float> onThresholdReached;
-        public event Action<float> onUnderThreshold;
+        public event Action<float> onSetDialogLevel;
 
         [SerializeField]
         private float _maxDialogLevel;
         [SerializeField]
         private float _currentDialogLevel;
-
-        [SerializeField]
-        private float[] _dialogLevelThresholds;
 
         [SerializeField]
         private float _barThickness;
@@ -67,19 +63,7 @@ namespace Architecture
 
         private void CheckforThreshold()
         {
-            foreach (var threshold in _dialogLevelThresholds)
-            {
-                if (_currentDialogLevel >= threshold)
-                {
-                    onThresholdReached?.Invoke(threshold);
-                    Debug.Log("threshold reached" + threshold);
-                }
-                else
-                {
-                    onUnderThreshold?.Invoke(threshold);
-                    Debug.Log("under threshold" + threshold);
-                }
-            }
+            onSetDialogLevel.Invoke(_currentDialogLevel);
         }
     }
 }

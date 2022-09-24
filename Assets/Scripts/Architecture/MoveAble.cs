@@ -4,6 +4,31 @@ namespace Architecture
 {
     public class MoveAble : TileObject
     {
+        public bool isSocketed;
+        public Socket socket;
+
+        public override void RegisterTileObjectInSocket(Socket socket)
+        {
+            if (socket)
+            {
+                isSocketed = true;
+                this.socket = socket;
+                socket.socketedTileObject = this;
+            }
+            TileManager.Instance.EvaluateSocketedTileObjects();
+        }
+
+        public override void UnRegisterTileObjectInSocket(Socket socket)
+        {
+            if (socket)
+            {
+                isSocketed = false;
+                this.socket = null;
+                socket.socketedTileObject = null;
+            }
+            TileManager.Instance.EvaluateSocketedTileObjects();
+        }
+
         public bool Move(Direction direction, float timeInSeconds, int depth)
         {
             if (IsLocked())
