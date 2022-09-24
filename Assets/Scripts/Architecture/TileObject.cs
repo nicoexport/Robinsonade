@@ -4,9 +4,6 @@ namespace Architecture
 {
     public abstract class TileObject : MonoBehaviour
     {
-        public bool isSocketed;
-        public Socket socket;
-
         public void Initialize()
         {
             TileManager.Instance.SnapToGrid(gameObject);
@@ -15,24 +12,12 @@ namespace Architecture
 
         public virtual void RegisterTileObjectInSocket(Socket socket)
         {
-            if (socket)
-            {
-                isSocketed = true;
-                this.socket = socket;
-                socket.socketedTileObject = this;
-            }
-                TileManager.Instance.EvaluateSocketedTileObjects();
+
         }
 
         public virtual void UnRegisterTileObjectInSocket(Socket socket)
         {
-            if (socket)
-            {
-                isSocketed = false;
-                this.socket = null;
-                socket.socketedTileObject = null;
-            }
-            TileManager.Instance.EvaluateSocketedTileObjects();
+
         }
 
         protected void RegisterTileObject()
