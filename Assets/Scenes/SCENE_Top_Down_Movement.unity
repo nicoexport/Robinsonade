@@ -998,11 +998,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.96
+      value: -19.41
       objectReference: {fileID: 0}
     - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.89
+      value: -16.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+--- !u!1001 &1331193720
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2220532280904242792, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: _symbolData
+      value: 
+      objectReference: {fileID: 11400000, guid: d7784f2867f3ab14fabb93362296ec51, type: 2}
+    - target: {fileID: 2220532280904242792, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: <SymbolData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: c993adb8d8d5a3446828bdcf33287808, type: 2}
+    - target: {fileID: 2220532280904242796, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_Name
+      value: Symbol (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242798, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 610611389, guid: e9731b693829cd54eb268ba2a39835c9, type: 3}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.25
       objectReference: {fileID: 0}
     - target: {fileID: 2220532280904242799, guid: 20920b50f1196bc459777b17abf88d35, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1436,8 +1507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce5e67844bb45e68b1d89b5d73355fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSocketed: 0
-  socket: {fileID: 0}
   _facingDirection: 0
   _moveTimeInSecondsRegular: 0.2
   _moveTimeInSecondsPush: 0.35
@@ -1709,8 +1778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cf85bdcbce44a2906a50648b913303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSocketed: 0
-  socket: {fileID: 0}
   _moveRotation: 30
   _moveRotationCurve:
     serializedVersion: 2

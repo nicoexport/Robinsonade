@@ -31,7 +31,7 @@ namespace Architecture
             _currentDialogLevel = 0;
             SetUI(_currentDialogLevel);
 
-            StartCoroutine(UpdateValue());
+            // StartCoroutine(UpdateValue());
         }
 
         IEnumerator UpdateValue()
@@ -45,7 +45,7 @@ namespace Architecture
 
         public void SetDialogLevel(float value)
         {
-            _currentDialogLevel = value;
+            _currentDialogLevel = value * 10;
             AdjustDialogLevelUI();
         }
 
@@ -63,7 +63,7 @@ namespace Architecture
 
         private void CheckforThreshold()
         {
-            onSetDialogLevel.Invoke(_currentDialogLevel);
+            onSetDialogLevel?.Invoke(_currentDialogLevel);
         }
     }
 }
