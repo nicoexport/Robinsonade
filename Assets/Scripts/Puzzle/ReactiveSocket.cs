@@ -10,8 +10,7 @@ public class ReactiveSocket : DialogLevelReactive
     [SerializeField]
     private Sprite unlockedSprite;
 
-    public UnityEvent OnThresholdReached;
-    public UnityEvent OnThresholdLost;
+    private bool _unlocked = false;
 
     private Socket _socket;
     private SpriteRenderer _spriteRenderer;
@@ -26,17 +25,22 @@ public class ReactiveSocket : DialogLevelReactive
 
     protected override void ThresholdReachedReaction()
     {
+        if (_unlocked)
+            return;
         _spriteRenderer.sprite = unlockedSprite;
         _spriteRenderer.sortingLayerName = "Midground";
-        OnThresholdReached?.Invoke();
+        DialogLevelManager.Instance.PlayUnlockAudio();
         _socket.UnlockSocket();
+        _unlocked = true;
     }
 
     protected override void UnderThresholdReaction()
     {
+        if (!_unlocked)
+            return;
         _spriteRenderer.sprite = lockedSprite;
         _spriteRenderer.sortingLayerName = "Default";
-        OnThresholdLost?.Invoke();
         _socket.LockSocket();
+        _unlocked = false;
     }
 }

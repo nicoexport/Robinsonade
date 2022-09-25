@@ -227,24 +227,6 @@ MonoBehaviour:
   closedColor: {r: 0.37254903, g: 0.33333334, b: 0.4156863, a: 1}
   openColor: {r: 0.37254903, g: 0.33333334, b: 0.4156863, a: 1}
   unitsToMove: 1
-  OnThresholdReached:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3676947069335169013}
-        m_TargetAssemblyTypeName: Audio.AudioCue, Assembly-CSharp
-        m_MethodName: PlayAudioCue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnThresholdLost:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3676947069335169013
 MonoBehaviour:
   m_ObjectHideFlags: 0

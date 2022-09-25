@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Audio;
 using UnityEngine;
 
 namespace Architecture
@@ -25,6 +26,11 @@ namespace Architecture
         private DialogLevelUI _currentDialogLevelUI;
 
         private int _actionType;
+
+        [SerializeField] private AudioCue _unlockAudio;
+        
+        private bool _canPlayAudio = true;
+        
 
         private void OnEnable()
         {
@@ -88,6 +94,20 @@ namespace Architecture
             _currentDialogLevelUI.FaceImage.overrideSprite = null;
             _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
             onSetDialogLevel?.Invoke(_currentDialogLevel);
+        }
+
+        public void PlayUnlockAudio()
+        {
+            Debug.Log("try play audio cue");
+            if(!_canPlayAudio)
+                return;
+            _canPlayAudio = false;
+            Debug.Log("play audio");
+            _unlockAudio.PlayAudioCue();
+            LeanTween.delayedCall(this.gameObject, 0.1f, () =>
+            {
+                _canPlayAudio = true;
+            });
         }
     }
 }

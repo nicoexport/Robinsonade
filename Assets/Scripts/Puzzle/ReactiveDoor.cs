@@ -16,10 +16,7 @@ public class ReactiveDoor : DialogLevelReactive
 
     [SerializeField]
     private int unitsToMove;
-
-    public UnityEvent OnThresholdReached;
-    public UnityEvent OnThresholdLost;
-
+    
     private Vector3 _leftOriginPosition;
     private Vector3 _leftOpenPosition;
     private Vector3 _rightOriginPosition;
@@ -57,7 +54,7 @@ public class ReactiveDoor : DialogLevelReactive
         {
             OpenDoor();
             ChangeDoorColor(openColor);
-            OnThresholdReached?.Invoke();
+            DialogLevelManager.Instance.PlayUnlockAudio();
             isOpen = true;
         }
     }
@@ -68,7 +65,6 @@ public class ReactiveDoor : DialogLevelReactive
         {
             CloseDoor();
             ChangeDoorColor(closedColor);
-            OnThresholdLost?.Invoke();
             isOpen = false;
         }
     }
