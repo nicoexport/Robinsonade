@@ -49,16 +49,17 @@ namespace Puzzle
          bool moveTargetIsWall = TileManager.Instance.CheckCollisionAt(moveTarget);
          var tileObjectAtMoveTarget = TileManager.Instance.GetTileObjectAt(moveTarget);
          
+         if (tileObjectAtMoveTarget is PuzzleRoomExit exit)
+         {
+            exit.Exit();
+            _canMove = true;
+            return;
+         }
+         
          if (_currentStance == Stance.Regular)
          {
             UpdateFacingDirection(targetDirection);
 
-            if (tileObjectAtMoveTarget is PuzzleRoomExit exit)
-            {
-               exit.Exit();
-               _canMove = true;
-               return;
-            }
             
             if (moveTargetIsWall || tileObjectAtMoveTarget)
             {
@@ -75,7 +76,8 @@ namespace Puzzle
             Vector3 facingTarget = transform.position + VectorFromDirection[(int) _facingDirection];
             var facingTileObject = TileManager.Instance.GetTileObjectAt(facingTarget);
             
-            if (moveTargetIsWall || (tileObjectAtMoveTarget) && (tileObjectAtMoveTarget != facingTileObject) || facingTileObject is not MoveAble)
+            if (moveTargetIsWall || (tileObjectAtMoveTarget) && (tileObjectAtMoveTarget != facingTileObject) || 
+                (facingTileObject is not MoveAble && facingTileObject != null))
             {
                Collide(moveTarget);
                return;
