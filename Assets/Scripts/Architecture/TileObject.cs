@@ -4,11 +4,12 @@ namespace Architecture
 {
     public abstract class TileObject : MonoBehaviour
     {
-        protected bool shouldInitialize = true;
+        protected bool isInitialized = false;
         public virtual void Initialize()
         {
             TileManager.Instance.SnapToGrid(gameObject);
             RegisterTileObject();
+            isInitialized = true;
         }
 
         public virtual void RegisterTileObjectInSocket(Socket socket)

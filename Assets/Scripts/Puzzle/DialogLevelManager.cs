@@ -28,7 +28,7 @@ namespace Architecture
         private int _actionType;
 
         [SerializeField] private AudioCue _unlockAudio;
-        
+        [SerializeField] private AudioCue _loseUnlockAudio;
         private bool _canPlayAudio = true;
         
 
@@ -104,6 +104,20 @@ namespace Architecture
             _canPlayAudio = false;
             Debug.Log("play audio");
             _unlockAudio.PlayAudioCue();
+            LeanTween.delayedCall(this.gameObject, 0.1f, () =>
+            {
+                _canPlayAudio = true;
+            });
+        }
+        
+        public void PlayLoseUnlockAudio()
+        {
+            Debug.Log("try play audio cue");
+            if(!_canPlayAudio)
+                return;
+            _canPlayAudio = false;
+            Debug.Log("play audio");
+            _loseUnlockAudio.PlayAudioCue();
             LeanTween.delayedCall(this.gameObject, 0.1f, () =>
             {
                 _canPlayAudio = true;

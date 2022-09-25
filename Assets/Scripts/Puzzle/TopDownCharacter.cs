@@ -1,6 +1,7 @@
 using System;
 using Architecture;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Puzzle
 {
@@ -24,6 +25,9 @@ namespace Puzzle
       [SerializeField] private Sprite[] _directionSprites;
       [SerializeField] private bool _canPushSideways;
       [SerializeField] private bool _needsPushTarget;
+
+      public UnityEvent OnCollision;
+      public UnityEvent OnMove;
 
       private Stance _currentStance = Stance.Regular;
       private bool _canMove = true;
@@ -99,6 +103,7 @@ namespace Puzzle
       {
          LeanTween.move(gameObject, target, moveTime).setOnComplete(FinishMove);
          LeanTween.rotateZ(gameObject, _moveRotation, moveTime).setEase(_moveRotationCurve);
+         OnMove?.Invoke();
       }
 
       private void FinishMove()
@@ -112,6 +117,8 @@ namespace Puzzle
          Vector3 collisionVector = target - transform.position;
          LeanTween.move(gameObject, transform.position + (Vector3) collisionVector * _collisionMovementInMeter,
             _collisionTimeInSeconds).setEasePunch().setOnComplete(FinishMove);
+         OnCollision.Invoke();
+         
       }
       
       private void UpdateFacingDirection(Direction direction)

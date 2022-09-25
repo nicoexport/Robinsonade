@@ -40,6 +40,7 @@ public class ReactiveSocket : DialogLevelReactive
             return;
         _spriteRenderer.sprite = lockedSprite;
         _spriteRenderer.sortingLayerName = "Default";
+        DialogLevelManager.Instance.PlayLoseUnlockAudio();
         _socket.LockSocket();
         _unlocked = false;
     }

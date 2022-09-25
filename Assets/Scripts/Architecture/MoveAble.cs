@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Architecture
 {
@@ -6,6 +7,8 @@ namespace Architecture
     {
         public bool isSocketed;
         public Socket socket;
+
+        public UnityEvent OnSocketRegister; 
 
         public override void RegisterTileObjectInSocket(Socket socket)
         {
@@ -17,6 +20,11 @@ namespace Architecture
                 if (socket.socketType == SocketType.Locked)
                 {
                     socket.LockSocket();
+                }
+
+                if (isInitialized)
+                {
+                    OnSocketRegister.Invoke();
                 }
             }
             
@@ -56,6 +64,11 @@ namespace Architecture
                     {
                         return false;
                     }
+                }
+
+                if (otherTileObj is DefaultTileObject)
+                {
+                    return false;
                 }
             }
 

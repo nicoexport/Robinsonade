@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8761059166002783675}
+  - {fileID: 7977447931044243604}
   m_Father: {fileID: 8959493770406196192}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,6 +52,7 @@ MonoBehaviour:
   dialogLevelUI_Prefab: {fileID: 7172943553612104529, guid: 1760ef085be4f394694114d500fc5014, type: 3}
   dialogLevelUISO: {fileID: 0}
   _unlockAudio: {fileID: 6082090785204775481}
+  _loseUnlockAudio: {fileID: 5327274593312464492}
 --- !u!1 &2675011866959472035
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +203,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395bf65f3e7c2514ba1cd4e976a59b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5620746135133551052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7977447931044243604}
+  - component: {fileID: 5327274593312464492}
+  m_Layer: 0
+  m_Name: LoseUnlockAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7977447931044243604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620746135133551052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8803342417938596060}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5327274593312464492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620746135133551052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e05485e8d114d0bb77ce1dc30ca1242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 0
+  _audioCue: {fileID: 11400000, guid: d02963972c03ed74d8b9e33551cd0659, type: 2}
+  _audioConfig: {fileID: 11400000, guid: 4566e091f2df3854ca874c0d4ef24357, type: 2}
+  _audioCueChannel: {fileID: 11400000, guid: 83cfcbd6a665350458cac837aad7ab28, type: 2}
 --- !u!1 &7840103394886259132
 GameObject:
   m_ObjectHideFlags: 0

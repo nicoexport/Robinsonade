@@ -65,6 +65,7 @@ public class ReactiveDoor : DialogLevelReactive
         {
             CloseDoor();
             ChangeDoorColor(closedColor);
+            DialogLevelManager.Instance.PlayLoseUnlockAudio();
             isOpen = false;
         }
     }
