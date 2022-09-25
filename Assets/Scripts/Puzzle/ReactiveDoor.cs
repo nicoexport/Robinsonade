@@ -4,14 +4,22 @@ using UnityEngine;
 public class ReactiveDoor : DialogLevelReactive
 {
     [SerializeField]
-    private TileObject leftDoor;
+    private DefaultTileObject leftDoor;
     [SerializeField]
-    private TileObject rightDoor;
+    private DefaultTileObject rightDoor;
 
     [SerializeField]
     private Color closedColor;
     [SerializeField]
     private Color openColor;
+
+    [SerializeField]
+    private int unitsToMove;
+
+    private Vector3 _leftOriginPosition;
+    private Vector3 _leftOpenPosition;
+    private Vector3 _rightOriginPosition;
+    private Vector3 _rightOpenPosition;
 
     private SpriteRenderer _leftSpriteRenderer;
     private SpriteRenderer _rightSpriteRenderer;
@@ -29,14 +37,17 @@ public class ReactiveDoor : DialogLevelReactive
     public override void Initialize()
     {
         TileManager.Instance.SnapToGrid(gameObject);
+        _leftOriginPosition = leftDoor.transform.position;
+        _leftOpenPosition = leftDoor.transform.position - leftDoor.transform.right * unitsToMove;
+        _rightOriginPosition = rightDoor.transform.position;
+        _rightOpenPosition = rightDoor.transform.position + rightDoor.transform.right * unitsToMove;
     }
 
     protected override void ThresholdReachedReaction()
     {
         if (!isOpen)
         {
-            MoveDoor(leftDoor, -1, 1f);
-            MoveDoor(rightDoor, 1, 1f);
+            OpenDoor();
             ChangeDoorColor(openColor);
             isOpen = true;
         }
@@ -46,20 +57,31 @@ public class ReactiveDoor : DialogLevelReactive
     {
         if (isOpen)
         {
-            MoveDoor(leftDoor, 1, 1f);
-            MoveDoor(rightDoor, -1, 1f);
+            CloseDoor();
             ChangeDoorColor(closedColor);
             isOpen = false;
         }
     }
 
-    private void MoveDoor(TileObject doorPart, int unitsToMove, float timeInSeconds)
+    private void OpenDoor()
     {
-        doorPart.UnregisterTileObject();
-        var target = doorPart.transform.position + doorPart.transform.right * unitsToMove;
-        LeanTween.move(doorPart.gameObject, target, timeInSeconds).setOnComplete(() => CompleteMoveDoor(doorPart));
+        leftDoor.UnregisterTileObject();
+        rightDoor.UnregisterTileObject();
+        LeanTween.cancel(leftDoor.gameObject);
+        LeanTween.cancel(rightDoor.gameObject);
+        LeanTween.move(leftDoor.gameObject, _leftOpenPosition, 1f).setOnComplete(() => CompleteMoveDoor(leftDoor));
+        LeanTween.move(rightDoor.gameObject, _rightOpenPosition, 1f).setOnComplete(() => CompleteMoveDoor(rightDoor));
     }
 
+    private void CloseDoor()
+    {
+        leftDoor.UnregisterTileObject();
+        rightDoor.UnregisterTileObject();
+        LeanTween.cancel(leftDoor.gameObject);
+        LeanTween.cancel(rightDoor.gameObject);
+        LeanTween.move(leftDoor.gameObject, _leftOriginPosition, 1f).setOnComplete(() => CompleteMoveDoor(leftDoor));
+        LeanTween.move(rightDoor.gameObject, _rightOriginPosition, 1f).setOnComplete(() => CompleteMoveDoor(rightDoor));
+    }
     private void ChangeDoorColor(Color changeToColor)
     {
         LeanTween.color(_leftSpriteRenderer.gameObject, changeToColor, 1f);

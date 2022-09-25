@@ -47,7 +47,7 @@ namespace Architecture
             Time.timeScale = 1f;
         }
 
-        protected override void OnApplicationQuit()
+        protected void OnDisable()
         {
 #if UNITY_EDITOR
             foreach (var setup in _scenesToLoad.List)

@@ -225,6 +225,7 @@ MonoBehaviour:
   rightDoor: {fileID: 8827274569024223895}
   closedColor: {r: 0.3372549, g: 0.427451, b: 0.72156864, a: 1}
   openColor: {r: 0.5137255, g: 0.49411768, b: 0.5254902, a: 1}
+  unitsToMove: 1
 --- !u!1 &8827274570431260216
 GameObject:
   m_ObjectHideFlags: 0
