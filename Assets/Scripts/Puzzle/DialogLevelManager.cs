@@ -34,18 +34,7 @@ namespace Architecture
             //TODO: _dialogLevelThresholds = currentNPC.relationshipLevelThresholds
             //TODO: SetDialogLevel(_currentDialogLevel);
             _currentDialogLevel = 0;
-            SetUI(_currentDialogLevel);
-
-            //StartCoroutine(UpdateValue());
-        }
-
-        IEnumerator UpdateValue()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(5f);
-                SetDialogLevel(UnityEngine.Random.value * 10);
-            }
+            _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
         }
 
         public void SetDialogLevel(float value)
