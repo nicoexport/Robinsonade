@@ -19,7 +19,12 @@ namespace Architecture
         [SerializeField]
         private DialogLevelUI dialogLevelUI_Prefab;
 
+        [SerializeField]
+        private DialogLevelUISO dialogLevelUISO;
+
         private DialogLevelUI _currentDialogLevelUI;
+
+        private int _actionType;
 
         private void OnEnable()
         {
@@ -45,7 +50,19 @@ namespace Architecture
 
         public void SetDialogLevel(float value)
         {
-            _currentDialogLevel = Mathf.Clamp( value * 10f, 0f, _maxDialogLevel);
+            if (value * 10f > _currentDialogLevel)
+            {
+                _actionType = 1;
+            }
+            else if (value * 10f < _currentDialogLevel)
+            {
+                _actionType = -1;
+            }
+            else
+            {
+                _actionType = 0;
+            }
+            _currentDialogLevel = Mathf.Clamp(value * 10f, 0f, _maxDialogLevel);
             AdjustDialogLevelUI();
         }
 
@@ -59,10 +76,28 @@ namespace Architecture
             _currentDialogLevelUI.Bar.fillAmount = val + (_barThickness * .5f);
             _currentDialogLevelUI.BarMask.fillAmount = val - (_barThickness * .5f);
             _currentDialogLevelUI.ScalaMask.fillAmount = val - (_barThickness * .5f);
+
+            if (_actionType > 0)
+            {
+                _currentDialogLevelUI.FaceImage.overrideSprite = _currentDialogLevelUI.DialogLevelUISO.positiveSprite;
+                _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.positiveColor;
+            }
+            else if (_actionType < 0)
+            {
+                _currentDialogLevelUI.FaceImage.overrideSprite = _currentDialogLevelUI.DialogLevelUISO.negativeSprite;
+                _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.negativeColor;
+            }
+            else
+            {
+                _currentDialogLevelUI.FaceImage.overrideSprite = _currentDialogLevelUI.DialogLevelUISO.neutralSprite;
+                _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
+            }
         }
 
         private void CheckforThreshold()
         {
+            _currentDialogLevelUI.FaceImage.overrideSprite = null;
+            _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
             onSetDialogLevel?.Invoke(_currentDialogLevel);
         }
     }
