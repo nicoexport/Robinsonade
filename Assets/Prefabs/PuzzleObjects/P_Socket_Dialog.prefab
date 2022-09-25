@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1553928480, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
-  m_Color: {r: 0.74409455, g: 0.3803922, b: 1, a: 1}
+  m_Color: {r: 0.8117648, g: 0.5411765, b: 0.7960785, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -116,4 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshold: 15
   lockedSprite: {fileID: 1553928480, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
-  unlockedSprite: {fileID: 1007163769, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
+  unlockedSprite: {fileID: -1485075090, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
