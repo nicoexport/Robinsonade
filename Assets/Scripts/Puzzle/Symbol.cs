@@ -8,18 +8,7 @@ namespace Puzzle
       private Sprite _defaultSprite;
       [field: SerializeField] private SymbolData _symbolData;
 
-      public int Impact
-      {
-         get
-         {
-            if (_symbolData)
-               return (int) (_symbolData.Impact - 1);
-            else
-            {
-               return 0;
-            }
-         }
-      }
+      public int Impact => _symbolData ? _symbolData.Impact : 0;
 
       private SpriteRenderer _renderer = default;
       

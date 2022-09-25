@@ -6,7 +6,7 @@ namespace Puzzle
    public class SymbolData : ScriptableObject
    {
       [field: SerializeField]
-      public SymbolValue Impact { get; private set; } = default;
+      public int Impact { get; private set; } = default;
       [field: SerializeField]
       public Sprite Sprite { get; private set; } = default;
    }
