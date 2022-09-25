@@ -41,6 +41,10 @@ public class ReactiveDoor : DialogLevelReactive
         _leftOpenPosition = leftDoor.transform.position - leftDoor.transform.right * unitsToMove;
         _rightOriginPosition = rightDoor.transform.position;
         _rightOpenPosition = rightDoor.transform.position + rightDoor.transform.right * unitsToMove;
+        _leftSpriteRenderer = leftDoor.GetComponentInChildren<SpriteRenderer>();
+        _leftSpriteRenderer.color = closedColor;
+        _rightSpriteRenderer = rightDoor.GetComponentInChildren<SpriteRenderer>();
+        _rightSpriteRenderer.color = closedColor;
     }
 
     protected override void ThresholdReachedReaction()

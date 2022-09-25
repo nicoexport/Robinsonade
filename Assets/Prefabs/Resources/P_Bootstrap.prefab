@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b36fcc04026c7448a9e2d723523e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDialogLevel: 100
+  _maxDialogLevel: 1000
   _currentDialogLevel: 0
   _barThickness: 0.05
   dialogLevelUI_Prefab: {fileID: 7172943553612104529, guid: 1760ef085be4f394694114d500fc5014, type: 3}

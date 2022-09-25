@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753a9d70fac4341a17080408851af37, type: 3}
   m_Name: SO_SymbolData_Bed
   m_EditorClassIdentifier: 
-  <Impact>k__BackingField: 0
+  <Impact>k__BackingField: 1
   <Sprite>k__BackingField: {fileID: -1620371811, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}

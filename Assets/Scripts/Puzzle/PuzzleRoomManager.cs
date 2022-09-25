@@ -7,11 +7,5 @@ namespace Puzzle
    {
       public Camera ActiveCamera;
       public Transform Player;
-
-      protected override void Awake()
-      {
-         base.Awake();
-         ActiveCamera = Camera.main;
-      }
    }
 }
