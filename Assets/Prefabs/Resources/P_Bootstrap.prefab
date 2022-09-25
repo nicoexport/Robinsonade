@@ -46,12 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDialogLevel: 100
   _currentDialogLevel: 0
-  _dialogLevelThresholds:
-  - 10
-  - 25
-  - 75
   _barThickness: 0.05
   dialogLevelUI_Prefab: {fileID: 7172943553612104529, guid: 1760ef085be4f394694114d500fc5014, type: 3}
+  dialogLevelUISO: {fileID: 0}
 --- !u!1 &3338184053957008699
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5496764308119474465}
   - component: {fileID: 4553370296902789988}
-  - component: {fileID: 4135261201543417911}
+  - component: {fileID: 1708685201865586881}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -142,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scenesToLoad: {fileID: 11400000, guid: 550e394211c96a24fb570e57c4aaf183, type: 2}
---- !u!114 &4135261201543417911
+--- !u!114 &1708685201865586881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4651364612278444631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4427beaf2963a3a488f00d9769dd6d25, type: 3}
+  m_Script: {fileID: 11500000, guid: 395bf65f3e7c2514ba1cd4e976a59b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8039244479481855450

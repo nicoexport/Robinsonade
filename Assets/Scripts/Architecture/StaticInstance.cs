@@ -11,7 +11,7 @@ namespace Architecture
          Instance = this as T;
       }
 
-      protected virtual void OnApplicationQuit()
+      protected virtual void OnDestroy()
       {
          Instance = null;
          Destroy(gameObject);

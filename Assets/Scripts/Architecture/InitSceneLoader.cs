@@ -7,10 +7,9 @@ namespace Architecture
 {
     public class InitSceneLoader : Singleton<InitSceneLoader>
     {
-        private const int MAIN_MENU_SCENE_BUILDINDEX = 1;
+        private const int START_SCENE_BUILDINDEX = 1;
 #if UNITY_EDITOR
         [SerializeField] private SceneSetupListSo _scenesToLoad;
-#endif
 
         public void RemoveFromScenes(string sceneName)
         {
@@ -21,6 +20,7 @@ namespace Architecture
         {
             _scenesToLoad.Add(sceneName);
         }
+#endif
 
         protected override void Awake()
         {
@@ -40,21 +40,21 @@ namespace Architecture
                     SceneManager.SetActiveScene(SceneManager.GetSceneByPath(setup.path));
             }
 #else
-            SceneManager.LoadScene(MAIN_MENU_SCENE_BUILDINDEX, LoadSceneMode.Additive);
+            SceneManager.LoadScene(START_SCENE_BUILDINDEX, LoadSceneMode.Additive);
             yield return null;
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(MAIN_MENU_SCENE_BUILDINDEX));
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(START_SCENE_BUILDINDEX));
 #endif
             Time.timeScale = 1f;
         }
 
+#if UNITY_EDITOR
         protected void OnDisable()
         {
-#if UNITY_EDITOR
             foreach (var setup in _scenesToLoad.List)
             {
                 SceneManager.UnloadScene(SceneManager.GetSceneByPath(setup.path));
             }
-#endif
         }
+#endif
     }
 }
