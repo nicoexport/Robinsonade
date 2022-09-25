@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 314839293319162479}
   - component: {fileID: 314839293319162512}
-  - component: {fileID: 314839293319162513}
   - component: {fileID: 314839293319162478}
+  - component: {fileID: -6541662349014458007}
   m_Layer: 0
   m_Name: P_Operator_Plus
   m_TagString: Untagged
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &314839293319162513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314839293319162514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c947729bf5130e14ea4e0fdfcc5ff053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSocketed: 0
-  socket: {fileID: 0}
 --- !u!114 &314839293319162478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,5 +96,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: effa829ce661447eb440de3b225f62e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6541662349014458007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314839293319162514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39bea0885e62f84aa2dd3ea731c4726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
