@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positiveSprite: {fileID: 1496586963, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
   positiveColor: {r: 0.5242717, g: 0.7924528, b: 0.41491634, a: 1}
-  neutralSprite: {fileID: 2432290, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
-  neutralColor: {r: 1, g: 1, b: 1, a: 1}
-  negativeSprite: {fileID: 991816220, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
+  neutralSprite: {fileID: 991816220, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
+  neutralColor: {r: 0.9339623, g: 0.69734234, b: 0, a: 1}
+  negativeSprite: {fileID: 1238353916, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
   negativeColor: {r: 0.745283, g: 0.31990921, b: 0.31990921, a: 1}
