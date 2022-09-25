@@ -13,7 +13,8 @@ public abstract class DialogLevelReactive : TileObject
 
     private void OnDisable()
     {
-        DialogLevelManager.Instance.onSetDialogLevel -= CheckForReaction;
+        if(DialogLevelManager.Instance)
+            DialogLevelManager.Instance.onSetDialogLevel -= CheckForReaction;
     }
 
     private void CheckForReaction(float dialogLevel)

@@ -11,6 +11,7 @@ namespace Architecture
         [SerializeField] private Tilemap[] _tilemaps;
         private readonly Dictionary<Vector3Int, Socket> _sockets = new Dictionary<Vector3Int, Socket>();
         private readonly Dictionary<Vector3Int, TileObject> _tileObjects = new Dictionary<Vector3Int, TileObject>();
+        private bool _isInitialized = false;
 
         protected override void Awake()
         {
@@ -27,6 +28,8 @@ namespace Architecture
             {
                 tileObject.Initialize();
             }
+
+            _isInitialized = true;
         }
 
         public void AddSocket(Socket socket)
@@ -149,6 +152,8 @@ namespace Architecture
 
         public void EvaluateSocketedTileObjects()
         {
+            if (!_isInitialized)
+                return;
             Debug.Log("evaluate");
             var operators = FindObjectsOfType<Operator>();
             int sum = 0;
