@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4309480071288161457
 SpriteRenderer:
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1154024091
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1600483267, guid: e9731b693829cd54eb268ba2a39835c9, type: 3}
   m_Color: {r: 1, g: 0.3820755, b: 0.3820755, a: 1}
@@ -98,4 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socketType: 1
+  socketedTileObject: {fileID: 0}
   canBePushedOnto: 1
+  isLocked: 0
