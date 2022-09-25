@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5ce47d683f0bf459e6676d835fb952, type: 3}
+  m_Name: SO_DialogLevelUISprites
+  m_EditorClassIdentifier: 
+  positiveSprite: {fileID: 1496586963, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
+  positiveColor: {r: 0.5242717, g: 0.7924528, b: 0.41491634, a: 1}
+  neutralSprite: {fileID: 2432290, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeSprite: {fileID: 991816220, guid: bbaea4c2a77c0174694b750ef4035e42, type: 3}
+  negativeColor: {r: 0.745283, g: 0.31990921, b: 0.31990921, a: 1}
