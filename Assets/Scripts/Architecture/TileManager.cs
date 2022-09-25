@@ -28,7 +28,8 @@ namespace Architecture
             {
                 tileObject.Initialize();
             }
-
+            
+            DialogLevelManager.Instance.CurrentDialogLevelUI.gameObject.SetActive(true);
             _isInitialized = true;
         }
 

@@ -23,24 +23,29 @@ namespace Architecture
         [SerializeField]
         private DialogLevelUISO dialogLevelUISO;
 
-        private DialogLevelUI _currentDialogLevelUI;
+        public DialogLevelUI CurrentDialogLevelUI { get; private set; }
 
         private int _actionType;
 
         [SerializeField] private AudioCue _unlockAudio;
         [SerializeField] private AudioCue _loseUnlockAudio;
         private bool _canPlayAudio = true;
-        
 
+
+        private void Awake()
+        {
+            base.Awake();
+            CurrentDialogLevelUI = Instantiate(dialogLevelUI_Prefab);
+            CurrentDialogLevelUI.gameObject.SetActive(false);
+        }
+        
         private void OnEnable()
         {
-            _currentDialogLevelUI = Instantiate(dialogLevelUI_Prefab);
-
             //TODO: _currentDialogLevel = currentNPC.relationshipLevel
             //TODO: _dialogLevelThresholds = currentNPC.relationshipLevelThresholds
             //TODO: SetDialogLevel(_currentDialogLevel);
             _currentDialogLevel = 0;
-            _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
+            CurrentDialogLevelUI.FaceImage.color = CurrentDialogLevelUI.DialogLevelUISO.neutralColor;
         }
 
         public void SetDialogLevel(float value)
@@ -63,36 +68,36 @@ namespace Architecture
 
         private void AdjustDialogLevelUI()
         {
-            LeanTween.value(_currentDialogLevelUI.Bar.fillAmount, _currentDialogLevel / _maxDialogLevel, .5f).setOnUpdate(SetUI).setOnComplete(CheckforThreshold);
+            LeanTween.value(CurrentDialogLevelUI.Bar.fillAmount, _currentDialogLevel / _maxDialogLevel, .5f).setOnUpdate(SetUI).setOnComplete(CheckforThreshold);
         }
 
         private void SetUI(float val)
         {
-            _currentDialogLevelUI.Bar.fillAmount = val + (_barThickness * .5f);
-            _currentDialogLevelUI.BarMask.fillAmount = val - (_barThickness * .5f);
-            _currentDialogLevelUI.ScalaMask.fillAmount = val - (_barThickness * .5f);
+            CurrentDialogLevelUI.Bar.fillAmount = val + (_barThickness * .5f);
+            CurrentDialogLevelUI.BarMask.fillAmount = val - (_barThickness * .5f);
+            CurrentDialogLevelUI.ScalaMask.fillAmount = val - (_barThickness * .5f);
 
             if (_actionType > 0)
             {
-                _currentDialogLevelUI.FaceImage.overrideSprite = _currentDialogLevelUI.DialogLevelUISO.positiveSprite;
-                _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.positiveColor;
+                CurrentDialogLevelUI.FaceImage.overrideSprite = CurrentDialogLevelUI.DialogLevelUISO.positiveSprite;
+                CurrentDialogLevelUI.FaceImage.color = CurrentDialogLevelUI.DialogLevelUISO.positiveColor;
             }
             else if (_actionType < 0)
             {
-                _currentDialogLevelUI.FaceImage.overrideSprite = _currentDialogLevelUI.DialogLevelUISO.negativeSprite;
-                _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.negativeColor;
+                CurrentDialogLevelUI.FaceImage.overrideSprite = CurrentDialogLevelUI.DialogLevelUISO.negativeSprite;
+                CurrentDialogLevelUI.FaceImage.color = CurrentDialogLevelUI.DialogLevelUISO.negativeColor;
             }
             else
             {
-                _currentDialogLevelUI.FaceImage.overrideSprite = _currentDialogLevelUI.DialogLevelUISO.neutralSprite;
-                _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
+                CurrentDialogLevelUI.FaceImage.overrideSprite = CurrentDialogLevelUI.DialogLevelUISO.neutralSprite;
+                CurrentDialogLevelUI.FaceImage.color = CurrentDialogLevelUI.DialogLevelUISO.neutralColor;
             }
         }
 
         private void CheckforThreshold()
         {
-            _currentDialogLevelUI.FaceImage.overrideSprite = null;
-            _currentDialogLevelUI.FaceImage.color = _currentDialogLevelUI.DialogLevelUISO.neutralColor;
+            CurrentDialogLevelUI.FaceImage.overrideSprite = null;
+            CurrentDialogLevelUI.FaceImage.color = CurrentDialogLevelUI.DialogLevelUISO.neutralColor;
             onSetDialogLevel?.Invoke(_currentDialogLevel);
         }
 

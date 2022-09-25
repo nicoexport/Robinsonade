@@ -54,6 +54,7 @@ namespace Architecture
             {
                 SceneManager.UnloadScene(SceneManager.GetSceneByPath(setup.path));
             }
+            base.OnDestroy();
         }
 #endif
     }
