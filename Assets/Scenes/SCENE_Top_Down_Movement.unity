@@ -748,6 +748,10 @@ PrefabInstance:
       propertyPath: threshold
       value: 170
       objectReference: {fileID: 0}
+    - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
+      propertyPath: OnThresholdReached.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8827274570073627661, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: m_Name
       value: P_Door_DialogLevel (5)
@@ -1398,6 +1402,10 @@ PrefabInstance:
       propertyPath: threshold
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
+      propertyPath: OnThresholdReached.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8827274570073627661, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: m_Name
       value: P_Door_DialogLevel (3)
@@ -1491,6 +1499,10 @@ PrefabInstance:
     - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: threshold
       value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
+      propertyPath: OnThresholdReached.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827274570073627661, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: m_Name
@@ -19883,6 +19895,10 @@ PrefabInstance:
       propertyPath: threshold
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
+      propertyPath: OnThresholdReached.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8827274570073627661, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: m_Name
       value: P_Door_DialogLevel (9)
@@ -23693,6 +23709,10 @@ PrefabInstance:
     - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: threshold
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8827274570073627660, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
+      propertyPath: OnThresholdReached.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827274570073627661, guid: 738313f9339a3cf479ca9ad4be4c9667, type: 3}
       propertyPath: m_Name

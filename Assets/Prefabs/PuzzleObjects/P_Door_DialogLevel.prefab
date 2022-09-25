@@ -184,6 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8827274570073627667}
   - component: {fileID: 8827274570073627660}
+  - component: {fileID: 3676947069335169013}
   m_Layer: 0
   m_Name: P_Door_DialogLevel
   m_TagString: Untagged
@@ -226,6 +227,40 @@ MonoBehaviour:
   closedColor: {r: 0.37254903, g: 0.33333334, b: 0.4156863, a: 1}
   openColor: {r: 0.37254903, g: 0.33333334, b: 0.4156863, a: 1}
   unitsToMove: 1
+  OnThresholdReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3676947069335169013}
+        m_TargetAssemblyTypeName: Audio.AudioCue, Assembly-CSharp
+        m_MethodName: PlayAudioCue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnThresholdLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3676947069335169013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827274570073627661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e05485e8d114d0bb77ce1dc30ca1242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 0
+  _audioCue: {fileID: 11400000, guid: 1fe52e5c12312454ca031aa2278b1cc5, type: 2}
+  _audioConfig: {fileID: 11400000, guid: 4566e091f2df3854ca874c0d4ef24357, type: 2}
+  _audioCueChannel: {fileID: 11400000, guid: 83cfcbd6a665350458cac837aad7ab28, type: 2}
 --- !u!1 &8827274570431260216
 GameObject:
   m_ObjectHideFlags: 0

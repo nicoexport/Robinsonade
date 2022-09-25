@@ -1,5 +1,6 @@
 using Architecture;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Socket))]
 public class ReactiveSocket : DialogLevelReactive
@@ -8,6 +9,9 @@ public class ReactiveSocket : DialogLevelReactive
     private Sprite lockedSprite;
     [SerializeField]
     private Sprite unlockedSprite;
+
+    public UnityEvent OnThresholdReached;
+    public UnityEvent OnThresholdLost;
 
     private Socket _socket;
     private SpriteRenderer _spriteRenderer;
@@ -24,6 +28,7 @@ public class ReactiveSocket : DialogLevelReactive
     {
         _spriteRenderer.sprite = unlockedSprite;
         _spriteRenderer.sortingLayerName = "Midground";
+        OnThresholdReached?.Invoke();
         _socket.UnlockSocket();
     }
 
@@ -31,6 +36,7 @@ public class ReactiveSocket : DialogLevelReactive
     {
         _spriteRenderer.sprite = lockedSprite;
         _spriteRenderer.sortingLayerName = "Default";
+        OnThresholdLost?.Invoke();
         _socket.LockSocket();
     }
 }
