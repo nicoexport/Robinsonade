@@ -19,7 +19,9 @@ namespace Architecture
                     socket.LockSocket();
                 }
             }
-            TileManager.Instance.EvaluateSocketedTileObjects();
+            
+            if(socket.socketType != SocketType.DialogLocked)
+                TileManager.Instance.EvaluateSocketedTileObjects();
         }
 
         public override void UnRegisterTileObjectInSocket(Socket socket)
@@ -30,7 +32,8 @@ namespace Architecture
                 this.socket = null;
                 socket.socketedTileObject = null;
             }
-            TileManager.Instance.EvaluateSocketedTileObjects();
+            if(socket.socketType != SocketType.DialogLocked)
+                TileManager.Instance.EvaluateSocketedTileObjects();
         }
 
         public bool Move(Direction direction, float timeInSeconds, int depth)
