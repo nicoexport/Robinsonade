@@ -48,7 +48,7 @@ namespace Architecture
         }
 
 #if UNITY_EDITOR
-        protected void OnDisable()
+        protected void OnDestroy()
         {
             foreach (var setup in _scenesToLoad.List)
             {
