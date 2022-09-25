@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753a9d70fac4341a17080408851af37, type: 3}
   m_Name: SO_SymbolData_Krauler
   m_EditorClassIdentifier: 
-  <Impact>k__BackingField: 0
+  <Impact>k__BackingField: -1
   <Sprite>k__BackingField: {fileID: 21300000, guid: 3fefd374595a6ee4ab3c2ad827bbf08f, type: 3}
