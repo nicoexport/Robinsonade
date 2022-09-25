@@ -10,7 +10,7 @@ namespace Puzzle
       [SerializeField] private Camera _targetRoomCamera;
 
 
-      public void Exit()
+      public virtual void Exit()
       {
          PuzzleRoomManager.Instance.ActiveCamera.gameObject.SetActive(false);
          _targetRoomCamera.gameObject.SetActive(true);

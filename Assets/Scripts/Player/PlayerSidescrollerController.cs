@@ -16,6 +16,7 @@ namespace Player
 
         protected void Awake()
         {
+            InputManager.Instance.ToggleActionMap(InputManager.Instance.PlayerInputActions.Sidescroll);
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
