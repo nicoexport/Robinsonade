@@ -31,6 +31,12 @@ namespace Puzzle
       private readonly Vector3[] VectorFromDirection = 
          new [] {Vector3.up, Vector3.left, Vector3.down, Vector3.right, Vector3.zero};
 
+      public override void Initialize()
+      {
+         base.Initialize();
+         //PuzzleRoomManager.Instance.Player = this.transform;
+      }
+
       public void TryMoveTo(Direction targetDirection)
       {
          if (!_canMove)
@@ -46,6 +52,13 @@ namespace Puzzle
          if (_currentStance == Stance.Regular)
          {
             UpdateFacingDirection(targetDirection);
+
+            if (tileObjectAtMoveTarget is PuzzleRoomExit exit)
+            {
+               exit.Exit();
+               _canMove = true;
+               return;
+            }
             
             if (moveTargetIsWall || tileObjectAtMoveTarget)
             {
