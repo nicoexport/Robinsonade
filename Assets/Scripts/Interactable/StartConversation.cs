@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class StartConversation : MonoBehaviour, IInteractable
 {
+    [SerializeField]
+    private int _sceneIndexToLoad;
+
     public void Interact()
     {
-        Debug.Log("Conversation");
-        //GetComponent<SwitchToPuzzleScene>().StartPuzzle();
+        SceneLoader.Instance.LoadScene(_sceneIndexToLoad);
     }
 }
