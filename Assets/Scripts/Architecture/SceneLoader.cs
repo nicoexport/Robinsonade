@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : Singleton<SceneLoader>
 {
+    [HideInInspector]
+    public int last_RealWorldScene_Index = 1; //load 1stFloor Scene if ther is no last "Realworld" Scene
+
     private Scene _currentScene;
     private int _sceneToLoad;
 

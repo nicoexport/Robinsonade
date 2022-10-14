@@ -1,4 +1,6 @@
 using Architecture;
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,8 +32,7 @@ public class InteractWithTrigger : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable interactable))
         {
             _interactable = interactable;
-            if (_interactable is StartConversation)
-                _indicatorAnimator.Play("start_talk");
+            CheckForIndicatorAnimationStart();
         }
     }
 
@@ -39,8 +40,7 @@ public class InteractWithTrigger : MonoBehaviour
     {
         if (collision.TryGetComponent(out IInteractable interactable))
         {
-            if (_interactable is StartConversation)
-                _indicatorAnimator.Play("stop_talk");
+            CheckForIndicatorAnimationEnd();
             _interactable = null;
         }
     }
@@ -49,6 +49,35 @@ public class InteractWithTrigger : MonoBehaviour
     {
         if (_interactable == null) return;
         _interactable?.Interact();
+        _indicatorAnimator.Play("Empty");
         _characterAnimator.SetTrigger(Interact);
+        StartCoroutine(ResetIndicatorAnim());
+    }
+
+
+    private void CheckForIndicatorAnimationStart()
+    {
+        if (_interactable == null) return;
+        if (_interactable is StartConversation)
+            _indicatorAnimator.Play("start_talk");
+        else
+            _indicatorAnimator.Play("start_interact");
+    }
+
+    private void CheckForIndicatorAnimationEnd()
+    {
+        if (_interactable == null) return;
+        if (_interactable is StartConversation)
+            _indicatorAnimator.Play("stop_talk");
+        else
+            _indicatorAnimator.Play("stop_interact");
+    }
+
+    private IEnumerator ResetIndicatorAnim()
+    {
+        yield return null;
+        WaitForSeconds waitTime = new WaitForSeconds(_characterAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        yield return waitTime;
+        CheckForIndicatorAnimationStart();
     }
 }

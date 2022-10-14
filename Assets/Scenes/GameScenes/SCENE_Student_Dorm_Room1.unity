@@ -3985,7 +3985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 410596770686813152, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 410596770686813152, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4033,7 +4033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073883149867409048, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
       propertyPath: _sceneIndexToLoad
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 609871495229839014, guid: 51917bed730f2d44b89c6d7fa36fb60e, type: 3}
@@ -4094,6 +4094,22 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 813917374520565021, guid: f6c3ec12736f6d847863323b1b796ea6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 813917374520565021, guid: f6c3ec12736f6d847863323b1b796ea6, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 813917374520565021, guid: f6c3ec12736f6d847863323b1b796ea6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 813917374520565021, guid: f6c3ec12736f6d847863323b1b796ea6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8119618542972105965, guid: f6c3ec12736f6d847863323b1b796ea6, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -4228,6 +4244,30 @@ PrefabInstance:
     - target: {fileID: 425421240632420047, guid: e9299fabe69210443a03aba5256a2338, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843465599209087794, guid: e9299fabe69210443a03aba5256a2338, type: 3}
+      propertyPath: _canEnter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843465599209087794, guid: e9299fabe69210443a03aba5256a2338, type: 3}
+      propertyPath: _animationName
+      value: close_door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843465599209087794, guid: e9299fabe69210443a03aba5256a2338, type: 3}
+      propertyPath: _saveAsLastDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843465599209087794, guid: e9299fabe69210443a03aba5256a2338, type: 3}
+      propertyPath: _sceneIndexToLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843465599209087794, guid: e9299fabe69210443a03aba5256a2338, type: 3}
+      propertyPath: playAnimationOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843465599209087794, guid: e9299fabe69210443a03aba5256a2338, type: 3}
+      propertyPath: _playAnimationOnAwake
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 425421240632420044, guid: e9299fabe69210443a03aba5256a2338, type: 3}
