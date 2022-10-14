@@ -9,9 +9,11 @@ namespace Architecture
     public class TileManager : Singleton<TileManager>
     {
         [SerializeField] private Tilemap[] _tilemaps;
+        public Vector3Int CurrentPlayerMoveTarget;
         private readonly Dictionary<Vector3Int, Socket> _sockets = new Dictionary<Vector3Int, Socket>();
         private readonly Dictionary<Vector3Int, TileObject> _tileObjects = new Dictionary<Vector3Int, TileObject>();
         private bool _isInitialized = false;
+        
 
         protected override void Awake()
         {
@@ -103,6 +105,11 @@ namespace Architecture
             if (_sockets.ContainsKey(gridpos))
                 return _sockets[gridpos];
             return null;
+        }
+
+        public Vector3Int WorldPosToGridPos(Vector3 position)
+        {
+            return _tilemaps[0].WorldToCell(position);
         }
 
         public void SnapToGrid(GameObject obj)

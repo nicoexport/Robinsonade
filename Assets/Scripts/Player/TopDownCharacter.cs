@@ -50,6 +50,7 @@ namespace Puzzle
          _canMove = false;
          UnregisterTileObject();
          Vector3 moveTarget = TileManager.Instance.GetNeighbourPosition(transform.position, targetDirection);
+         TileManager.Instance.CurrentPlayerMoveTarget = TileManager.Instance.WorldPosToGridPos(moveTarget);
          bool moveTargetIsWall = TileManager.Instance.CheckCollisionAt(moveTarget);
          var tileObjectAtMoveTarget = TileManager.Instance.GetTileObjectAt(moveTarget);
          

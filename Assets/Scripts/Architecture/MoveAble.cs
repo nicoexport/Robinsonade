@@ -65,11 +65,12 @@ namespace Architecture
                         return false;
                     }
                 }
-
-                if (otherTileObj is DefaultTileObject)
+                else
                 {
                     return false;
                 }
+
+                
             }
 
             var neighbourSocket = TileManager.Instance.GetSocketAt(target);
