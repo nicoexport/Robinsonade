@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class DialogExit : PuzzleRoomExit
 {
-    [SerializeField]
-    private int _sceneToLoadIndex;
-
     public override void Exit()
     {
         DialogLevelManager.Instance.CurrentDialogLevelUI.gameObject.SetActive(false);
-        SceneLoader.Instance.LoadScene(_sceneToLoadIndex);
+        SceneLoader.Instance.LoadScene(SceneLoader.Instance.last_RealWorldScene_Index);
     }
 }

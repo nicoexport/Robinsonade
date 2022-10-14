@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartConversation : MonoBehaviour, IInteractable
 {
@@ -7,6 +8,7 @@ public class StartConversation : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        SceneLoader.Instance.last_RealWorldScene_Index = SceneManager.GetActiveScene().buildIndex;
         SceneLoader.Instance.LoadScene(_sceneIndexToLoad);
     }
 }
