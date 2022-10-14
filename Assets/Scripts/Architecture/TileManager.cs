@@ -165,14 +165,5 @@ namespace Architecture
             DialogLevelManager.Instance.SetDialogLevel(sum);
         }
     }
-
-    public enum Direction
-    {
-        North,
-        West,
-        South,
-        East,
-        None
-    }
 }
 
