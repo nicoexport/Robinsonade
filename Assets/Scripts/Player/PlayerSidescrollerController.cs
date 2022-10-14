@@ -10,8 +10,8 @@ namespace Player
         private float _horizontalInput;
         private Rigidbody2D _rigidbody2D;
         private Animator _animator;
-        private SpriteRenderer _spriteRenderer;
         private Transform _transform;
+        private Transform _indicatorVisuals;
         private bool _facingRight = true;
 
         protected void Awake()
@@ -19,8 +19,8 @@ namespace Player
             InputManager.Instance.ToggleActionMap(InputManager.Instance.PlayerInputActions.Sidescroll);
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _transform = transform;
+            _indicatorVisuals = GetComponent<PlayerReferenceHolder>().IndicatorVisualsTransform;
         }
 
         protected void Update()
@@ -49,8 +49,8 @@ namespace Player
         }
 
         private void Flip()
-        {   
-            //_spriteRenderer.flipX = !_spriteRenderer.flipX;
+        {
+            _indicatorVisuals.Rotate(0f,180f,0f);
             _transform.Rotate(0f, 180f, 0f);
             _facingRight = !_facingRight;
         }
