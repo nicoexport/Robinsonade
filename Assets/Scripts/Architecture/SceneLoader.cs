@@ -39,7 +39,9 @@ public class SceneLoader : Singleton<SceneLoader>
     private void UnloadScene()
     {
         SceneManager.UnloadSceneAsync(_currentScene).completed += OnUnloadCompleted;
+        #if UNITY_EDITOR
         InitSceneLoader.Instance.RemoveFromScenes(_currentScene.name);
+        #endif
     }
 
     private void OnUnloadCompleted(AsyncOperation asyncOperation)
@@ -50,8 +52,9 @@ public class SceneLoader : Singleton<SceneLoader>
     private void OnLoadCompleted(AsyncOperation asyncOperation)
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_sceneToLoad));
+        #if UNITY_EDITOR
         InitSceneLoader.Instance.AddToScenes(SceneManager.GetSceneByBuildIndex(_sceneToLoad).name);
-
+        #endif
         InputManager.Instance.PlayerInputActions.Enable();
 
         StartCoroutine(FadeIn());
