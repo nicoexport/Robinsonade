@@ -21,9 +21,10 @@ public class SceneLoader : Singleton<SceneLoader>
     {
         _sceneToLoad = sceneToLoad;
         _currentScene = SceneManager.GetActiveScene();
-        StartCoroutine(FadeOut());
 
-        
+        InputManager.Instance.PlayerInputActions.Disable();
+
+        StartCoroutine(FadeOut());  
     }
 
     private IEnumerator FadeOut()
@@ -48,6 +49,7 @@ public class SceneLoader : Singleton<SceneLoader>
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_sceneToLoad));
         InitSceneLoader.Instance.AddToScenes(SceneManager.GetSceneByBuildIndex(_sceneToLoad).name);
+        InputManager.Instance.PlayerInputActions.Enable();
         StartCoroutine(FadeIn());
     }
 
