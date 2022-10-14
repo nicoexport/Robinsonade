@@ -1,5 +1,4 @@
 using Architecture;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,7 +23,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
         InputManager.Instance.PlayerInputActions.Disable();
 
-        StartCoroutine(FadeOut());  
+        StartCoroutine(FadeOut());
     }
 
     private IEnumerator FadeOut()
@@ -45,11 +44,13 @@ public class SceneLoader : Singleton<SceneLoader>
         SceneManager.LoadSceneAsync(_sceneToLoad, LoadSceneMode.Additive).completed += OnLoadCompleted;
     }
 
-    private void OnLoadCompleted(AsyncOperation asyncOperation) 
+    private void OnLoadCompleted(AsyncOperation asyncOperation)
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(_sceneToLoad));
         InitSceneLoader.Instance.AddToScenes(SceneManager.GetSceneByBuildIndex(_sceneToLoad).name);
+
         InputManager.Instance.PlayerInputActions.Enable();
+
         StartCoroutine(FadeIn());
     }
 
