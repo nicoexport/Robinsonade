@@ -31,8 +31,7 @@ namespace Architecture
         [SerializeField] private AudioCue _loseUnlockAudio;
         private bool _canPlayAudio = true;
 
-
-        private void Awake()
+        protected override void Awake()
         {
             base.Awake();
             CurrentDialogLevelUI = Instantiate(dialogLevelUI_Prefab);
